@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+
+@theme {
+  /* Dark navy color palette matching Figma */
+  --color-primary-dark: #0B1224;
+  --color-primary: #0D1B2A;
+  --color-primary-light: #1B2838;
+  --color-card-bg: rgba(13, 27, 42, 0.85);
+  --color-card-border: rgba(77, 168, 218, 0.2);
+  --color-accent: #4DA8DA;
+  --color-accent-light: #5CB8FF;
+  --color-accent-glow: rgba(77, 168, 218, 0.3);
+  --color-blue-btn: #2563EB;
+  --color-text-primary: #FFFFFF;
+  --color-text-secondary: #94A3B8;
+  --color-text-muted: #64748B;
+  --color-background: #0B1224;
+  --color-surface: #0D1B2A;
+  --color-overlay-blue: rgba(37, 99, 235, 0.7);
+
+  --font-sans: 'Inter', sans-serif;
+  --font-heading: 'Poppins', sans-serif;
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-primary-dark);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent);
+    border-radius: 4px;
+  }
+}
+
+/* Marquee animation for scrolling tags */
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes marquee-reverse {
+  0% { transform: translateX(-50%); }
+  100% { transform: translateX(0); }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+.animate-marquee-reverse {
+  animation: marquee-reverse 20s linear infinite;
+}
+
+/* Particle canvas */
+.particle-canvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+/* Glassmorphism card */
+.glass-card {
+  background: linear-gradient(135deg, rgba(13, 27, 42, 0.9) 0%, rgba(27, 40, 56, 0.7) 100%);
+  border: 1px solid rgba(77, 168, 218, 0.15);
+  backdrop-filter: blur(10px);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+.glass-card:hover {
+  border-color: rgba(77, 168, 218, 0.4);
+  box-shadow: 0 0 30px rgba(77, 168, 218, 0.1);
+  transform: translateY(-4px);
+}
+
+/* Blue circle icon container */
+.icon-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #2563EB, #4DA8DA);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 24px;
+}
+
+/* Swiper custom styles */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #4DA8DA !important;
+}
+
+.swiper-pagination-bullet {
+  background: #4DA8DA !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #2563EB !important;
+}
+
+/* Stats counter section overlay */
+.stats-overlay {
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.8) 0%, rgba(77, 168, 218, 0.6) 100%);
+}
+
+/* Decorative circle */
+.decorative-circle {
+  border: 2px solid rgba(77, 168, 218, 0.2);
+  border-radius: 50%;
+  position: absolute;
+}
