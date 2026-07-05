@@ -2,11 +2,13 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, ChevronDown } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSiteImage } from '../hooks/useSiteImage';
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false);
   const [companyOpen, setCompanyOpen] = useState(false);
   const location = useLocation();
+  const logoUrl = useSiteImage('settings', 'logoUrl', '/images/company-logo.png');
 
   const navLinks = [
     { name: 'Home', href: '/' },
@@ -16,6 +18,7 @@ export default function Navbar() {
       { name: 'Career', href: '/career' },
       { name: 'Gallery', href: '/gallery' },
     ]},
+    { name: 'Blog', href: '/blog' },
     { name: 'Contact', href: '/contact' },
   ];
 
@@ -27,7 +30,7 @@ export default function Navbar() {
         <div className="flex justify-between items-center h-20">
           {/* Logo */}
           <Link to="/" className="flex items-center">
-            <img src="/images/company-logo.png" alt="Gravity Tech World" className="h-10 w-auto" />
+            <img src={logoUrl} alt="Gravity Tech World" className="h-10 w-auto" />
           </Link>
 
           {/* Desktop Nav */}

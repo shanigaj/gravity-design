@@ -2,8 +2,10 @@ import { Link } from 'react-router-dom';
 import { FaInstagram, FaFacebook, FaSkype, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Mail, Phone, MapPin } from 'lucide-react';
+import { useSiteImage } from '../hooks/useSiteImage';
 
 export default function Footer() {
+  const logoUrl = useSiteImage('settings', 'logoUrl', '/images/company-logo.png');
   return (
     <footer className="bg-[#0B1224] relative overflow-hidden">
       {/* Google Maps Embed */}
@@ -48,7 +50,7 @@ export default function Footer() {
           {/* Company Info */}
           <div className="lg:pr-8">
             <div className="mb-6">
-              <img src="/images/company-logo.png" alt="Gravity Tech World" className="h-12 w-auto" />
+              <img src={logoUrl} alt="Gravity Tech World" className="h-12 w-auto" />
             </div>
             <p className="text-white/80 text-[14px] leading-[1.8] mb-6">
               Our Expert Team Develops Contemporary Websites And Mobile Apps, Enabling Businesses To Embrace Digital Transformation. We Prioritize Inclusivity, Support, And Diversity, Fostering Creativity And Innovation In Everything We Do.

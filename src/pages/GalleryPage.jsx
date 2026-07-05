@@ -1,13 +1,51 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
+import { collection, getDocs, doc, getDoc, query, where, orderBy } from 'firebase/firestore';
+import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 
-const years = ['2022', '2023', '2024'];
-
 export default function GalleryPage() {
+  const [years, setYears] = useState(['2022', '2023', '2024']);
   const [activeYear, setActiveYear] = useState('2022');
+  const [photos, setPhotos] = useState([]);
+
+  useEffect(() => {
+    const fetchYears = async () => {
+      try {
+        const snap = await getDoc(doc(db, 'siteImages', 'gallerySettings'));
+        if (snap.exists() && snap.data().years) {
+          const fetchedYears = snap.data().years;
+          setYears(fetchedYears);
+          if (!fetchedYears.includes(activeYear)) {
+            setActiveYear(fetchedYears[0] || '2022');
+          }
+        }
+      } catch (err) { console.log('Firestore not ready for years'); }
+    };
+    fetchYears();
+  }, []);
+
+  useEffect(() => {
+    const fetchPhotos = async () => {
+      try {
+        const q = query(collection(db, 'gallery'), where('year', '==', activeYear), orderBy('createdAt', 'desc'));
+        const snap = await getDocs(q);
+        const urls = snap.docs.map(d => d.data().url);
+        setPhotos(urls.length > 0 ? urls : []);
+      } catch (err) {
+        console.log('Firestore not ready, showing placeholders');
+        setPhotos([]);
+      }
+    };
+    fetchPhotos();
+  }, [activeYear]);
+
+  // Duplicate photos for infinite marquee effect (need enough to fill screen)
+  const marqueePhotos = photos.length > 0 
+    ? [...photos, ...photos, ...photos] 
+    : [...Array(10)];
 
   return (
     <>
@@ -53,14 +91,18 @@ export default function GalleryPage() {
             {/* Top Row - Sliding Right */}
             <div className="flex overflow-hidden">
               <div className="flex animate-marquee-reverse whitespace-nowrap items-center">
-                {[...Array(10)].map((_, i) => (
+                {marqueePhotos.map((item, i) => (
                   <div
                     key={`top-${i}`}
                     className="w-[300px] h-[220px] mx-3 flex-shrink-0 rounded-[20px] bg-[#2A344A] border border-transparent overflow-hidden group cursor-pointer hover:border-accent transition-all duration-300 shadow-lg"
                   >
-                    <div className="w-full h-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center group-hover:from-accent/10 group-hover:to-primary-light transition-all duration-300">
-                      <span className="text-text-muted/30 text-sm group-hover:text-accent/50 transition-colors">Photo</span>
-                    </div>
+                    {photos.length > 0 && typeof item === 'string' ? (
+                      <img src={item} alt={`Gallery ${activeYear}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center group-hover:from-accent/10 group-hover:to-primary-light transition-all duration-300">
+                        <span className="text-text-muted/30 text-sm group-hover:text-accent/50 transition-colors">Photo</span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>
@@ -69,14 +111,18 @@ export default function GalleryPage() {
             {/* Bottom Row - Sliding Left */}
             <div className="flex overflow-hidden">
               <div className="flex animate-marquee whitespace-nowrap items-center">
-                {[...Array(10)].map((_, i) => (
+                {marqueePhotos.map((item, i) => (
                   <div
                     key={`bottom-${i}`}
                     className="w-[300px] h-[220px] mx-3 flex-shrink-0 rounded-[20px] bg-[#2A344A] border border-transparent overflow-hidden group cursor-pointer hover:border-accent transition-all duration-300 shadow-lg"
                   >
-                    <div className="w-full h-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center group-hover:from-accent/10 group-hover:to-primary-light transition-all duration-300">
-                      <span className="text-text-muted/30 text-sm group-hover:text-accent/50 transition-colors">Photo</span>
-                    </div>
+                    {photos.length > 0 && typeof item === 'string' ? (
+                      <img src={item} alt={`Gallery ${activeYear}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                    ) : (
+                      <div className="w-full h-full bg-gradient-to-br from-primary-light to-primary flex items-center justify-center group-hover:from-accent/10 group-hover:to-primary-light transition-all duration-300">
+                        <span className="text-text-muted/30 text-sm group-hover:text-accent/50 transition-colors">Photo</span>
+                      </div>
+                    )}
                   </div>
                 ))}
               </div>

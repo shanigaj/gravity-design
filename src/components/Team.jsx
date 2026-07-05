@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { FaUserCheck, FaBriefcase, FaCogs } from 'react-icons/fa';
+import { useTeamPhotos } from '../hooks/useSiteImage';
 
 const features = [
   {
@@ -20,6 +21,24 @@ const features = [
 ];
 
 export default function Team() {
+  const teamPhotos = useTeamPhotos();
+
+  const renderPhoto = (index, className) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: index * 0.05 }}
+      className={`rounded-2xl bg-[#1E2A45] overflow-hidden ${className}`}
+    >
+      {teamPhotos[index] ? (
+        <img src={teamPhotos[index]} alt={`Team member ${index + 1}`} className="w-full h-full object-cover" />
+      ) : (
+        <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
+      )}
+    </motion.div>
+  );
+
   return (
     <section className="py-20 bg-primary-dark">
       <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
@@ -37,82 +56,18 @@ export default function Team() {
         <div className="max-w-5xl mx-auto mb-16">
           {/* Row 1 */}
           <div className="grid grid-cols-4 gap-4 mb-4">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[4/5] mt-10 overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.1 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[4/5] overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.15 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[4/5] overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[4/5] mt-4 overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
+            {renderPhoto(0, 'aspect-[4/5] mt-10')}
+            {renderPhoto(1, 'aspect-[4/5]')}
+            {renderPhoto(2, 'aspect-[4/5]')}
+            {renderPhoto(3, 'aspect-[4/5] mt-4')}
           </div>
           
           {/* Row 2 - offset to right */}
           <div className="grid grid-cols-4 gap-4 ml-16">
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.25 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[5/4] overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.3 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[5/4] overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.35 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[5/4] overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
-            <motion.div
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4 }}
-              className="rounded-2xl bg-[#1E2A45] aspect-[5/4] overflow-hidden"
-            >
-              <div className="w-full h-full bg-gradient-to-br from-[#1E2A45] to-[#151D33]" />
-            </motion.div>
+            {renderPhoto(4, 'aspect-[5/4]')}
+            {renderPhoto(5, 'aspect-[5/4]')}
+            {renderPhoto(6, 'aspect-[5/4]')}
+            {renderPhoto(7, 'aspect-[5/4]')}
           </div>
         </div>
 

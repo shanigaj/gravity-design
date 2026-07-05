@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
+import { useSiteImage } from '../hooks/useSiteImage';
 
 const stats = [
   { number: 1000, suffix: '+', label: 'Happy Customers' },
@@ -45,12 +46,14 @@ function Counter({ target, suffix }) {
 }
 
 export default function Stats() {
+  const statsBg = useSiteImage('statsBg', 'url', 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80');
+
   return (
     <section className="relative py-16">
       <div
         className="absolute inset-0 bg-cover bg-center bg-fixed"
         style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80')`,
+          backgroundImage: `url('${statsBg}')`,
         }}
       />
       <div className="absolute inset-0 stats-overlay" />

@@ -3,6 +3,7 @@ import ParticleNetwork from '../components/ParticleNetwork';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
+import { useSiteImage } from '../hooks/useSiteImage';
 
 const timeline = [
   { year: '2022', desc: 'Gravity Tech World Established As A Part Of The Software Development Industry, We Are Into 4 Major Verticals. Viz - Mobile App Development.', side: 'left' },
@@ -22,6 +23,9 @@ const values = [
 ];
 
 export default function AboutPage() {
+  const heroUrl = useSiteImage('about', 'heroUrl', '/images/team-hero.jpg');
+  const journeyUrl = useSiteImage('about', 'journeyUrl', '/images/Group-60.png');
+
   return (
     <>
       <SEO title="About Us" description="Learn about Gravity Tech World - A leading web and software development company in Surat." />
@@ -30,7 +34,7 @@ export default function AboutPage() {
       {/* Hero with team photo */}
       <section className="relative min-h-[110vh] flex items-end justify-center overflow-hidden bg-primary-dark">
         <div className="absolute inset-0 bg-cover bg-center" style={{
-          backgroundImage: `linear-gradient(to bottom, rgba(11,18,36,0.4), rgba(11,18,36,0.85)), url('/images/team-hero.jpg')`
+          backgroundImage: `linear-gradient(to bottom, rgba(11,18,36,0.4), rgba(11,18,36,0.85)), url('${heroUrl}')`
         }} />
         <ParticleNetwork />
         <div className="relative z-10 text-center h-screen flex items-center justify-center px-4 pb-16">
@@ -131,7 +135,7 @@ export default function AboutPage() {
               className="absolute z-20 w-[340px] h-[340px] flex items-center justify-center"
             >
               <img 
-                src="/images/Group-60.png" 
+                src={journeyUrl}
                 alt="Gravity Journey" 
                 className="w-full h-full object-contain drop-shadow-[0_0_30px_rgba(59,130,246,0.15)]" 
               />
@@ -201,7 +205,7 @@ export default function AboutPage() {
           {/* Mobile Vertical Layout */}
           <div className="md:hidden relative mt-10">
             <div className="flex justify-center mb-10">
-              <img src="/images/Group-60.png" alt="Gravity Journey" className="w-48 h-48 object-contain" />
+              <img src={journeyUrl} alt="Gravity Journey" className="w-48 h-48 object-contain" />
             </div>
             <div className="space-y-8">
               {timeline.map((item, i) => (

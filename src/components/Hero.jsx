@@ -1,7 +1,9 @@
 import { motion } from 'framer-motion';
 import ParticleNetwork from './ParticleNetwork';
+import { useSiteImage } from '../hooks/useSiteImage';
 
 export default function Hero() {
+  const heroImage = useSiteImage('hero', 'url', '/images/OBJECTS.png');
   return (
     <section id="home" className="relative pt-32 pb-4 overflow-hidden bg-primary-dark">
       <ParticleNetwork />
@@ -37,7 +39,7 @@ export default function Hero() {
             className="flex justify-center lg:justify-end"
           >
             <img
-              src="/images/OBJECTS.png"
+              src={heroImage}
               alt="Team working with technology"
               className="w-full max-w-lg drop-shadow-2xl"
             />
