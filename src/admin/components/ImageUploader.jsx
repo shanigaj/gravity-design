@@ -1,52 +1,88 @@
-import { useState, useCallback } from 'react';
-import { ref, uploadBytesResumable, getDownloadURL } from 'firebase/storage';
-import { storage } from '../../firebase';
-import { FaCloudUploadAlt, FaTrash, FaCheckCircle } from 'react-icons/fa';
+import { useState, useCallback, useEffect } from 'react';
+import { FaCloudUploadAlt, FaTrash, FaCheckCircle, FaSpinner } from 'react-icons/fa';
+
+/**
+ * Compress and resize image before storing
+ * Returns a base64 data URL
+ */
+function compressImage(file, maxWidth = 800, quality = 0.6) {
+  return new Promise((resolve, reject) => {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      const img = new Image();
+      img.onload = () => {
+        const canvas = document.createElement('canvas');
+        let width = img.width;
+        let height = img.height;
+
+        // Resize if larger than maxWidth
+        if (width > maxWidth) {
+          height = Math.round((height * maxWidth) / width);
+          width = maxWidth;
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+        const ctx = canvas.getContext('2d');
+        ctx.drawImage(img, 0, 0, width, height);
+
+        // Convert to JPEG base64 with compression
+        const dataUrl = canvas.toDataURL('image/jpeg', quality);
+        resolve(dataUrl);
+      };
+      img.onerror = reject;
+      img.src = e.target.result;
+    };
+    reader.onerror = reject;
+    reader.readAsDataURL(file);
+  });
+}
 
 export default function ImageUploader({ storagePath, currentUrl, onUploadComplete, label = 'Upload Image', className = '' }) {
   const [uploading, setUploading] = useState(false);
-  const [progress, setProgress] = useState(0);
   const [preview, setPreview] = useState(currentUrl || null);
   const [dragActive, setDragActive] = useState(false);
+  const [error, setError] = useState('');
+  const [done, setDone] = useState(false);
 
-  const handleUpload = useCallback((file) => {
+  // Sync preview with currentUrl prop when it changes
+  useEffect(() => {
+    if (currentUrl && !uploading) {
+      setPreview(currentUrl);
+    }
+  }, [currentUrl]);
+
+  const handleUpload = useCallback(async (file) => {
     if (!file) return;
     if (!file.type.startsWith('image/')) {
-      alert('Please upload an image file');
+      setError('Please upload an image file');
       return;
     }
-
-    // Preview
-    const reader = new FileReader();
-    reader.onload = (e) => setPreview(e.target.result);
-    reader.readAsDataURL(file);
-
-    // Upload to Firebase Storage
-    const storageRef = ref(storage, `${storagePath}/${Date.now()}_${file.name}`);
-    const uploadTask = uploadBytesResumable(storageRef, file);
-
+    if (file.size > 10 * 1024 * 1024) {
+      setError('File too large. Max 10MB allowed.');
+      return;
+    }
+    setError('');
+    setDone(false);
     setUploading(true);
-    setProgress(0);
 
-    uploadTask.on(
-      'state_changed',
-      (snapshot) => {
-        const pct = (snapshot.bytesTransferred / snapshot.totalBytes) * 100;
-        setProgress(Math.round(pct));
-      },
-      (error) => {
-        console.error('Upload error:', error);
-        setUploading(false);
-        alert('Upload failed. Please try again.');
-      },
-      async () => {
-        const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-        setUploading(false);
-        setProgress(100);
-        if (onUploadComplete) onUploadComplete(downloadURL);
-      }
-    );
-  }, [storagePath, onUploadComplete]);
+    try {
+      // Compress and resize the image
+      const dataUrl = await compressImage(file, 800, 0.6);
+      
+      setPreview(dataUrl);
+      setUploading(false);
+      setDone(true);
+      setTimeout(() => setDone(false), 3000);
+      
+      // Pass the base64 data URL to the parent component
+      if (onUploadComplete) onUploadComplete(dataUrl);
+    } catch (err) {
+      console.error('Image processing error:', err);
+      setUploading(false);
+      setError('Failed to process image. Please try again.');
+    }
+  }, [onUploadComplete]);
 
   const handleDrop = (e) => {
     e.preventDefault();
@@ -62,13 +98,20 @@ export default function ImageUploader({ storagePath, currentUrl, onUploadComplet
 
   const handleRemove = () => {
     setPreview(null);
-    setProgress(0);
+    setDone(false);
+    setError('');
     if (onUploadComplete) onUploadComplete('');
   };
 
   return (
     <div className={className}>
       {label && <label className="text-[#45ADFF] text-sm font-medium mb-3 block">{label}</label>}
+
+      {error && (
+        <div className="bg-red-500/10 border border-red-500/30 rounded-xl px-4 py-3 mb-3 text-red-400 text-sm">
+          ❌ {error}
+        </div>
+      )}
 
       {preview ? (
         <div className="relative rounded-2xl overflow-hidden border border-white/10 bg-white/[0.02] group">
@@ -86,16 +129,14 @@ export default function ImageUploader({ storagePath, currentUrl, onUploadComplet
             </button>
           </div>
           {uploading && (
-            <div className="absolute bottom-0 left-0 right-0 bg-black/70 px-4 py-2">
-              <div className="flex items-center gap-3">
-                <div className="flex-1 h-1.5 bg-white/10 rounded-full overflow-hidden">
-                  <div className="h-full bg-[#45ADFF] rounded-full transition-all duration-300" style={{ width: `${progress}%` }} />
-                </div>
-                <span className="text-white text-xs font-medium">{progress}%</span>
+            <div className="absolute inset-0 bg-black/60 flex items-center justify-center">
+              <div className="text-center">
+                <FaSpinner className="animate-spin text-[#45ADFF] mx-auto mb-2" size={28} />
+                <p className="text-white text-sm">Processing...</p>
               </div>
             </div>
           )}
-          {!uploading && progress === 100 && (
+          {done && (
             <div className="absolute top-3 right-3">
               <FaCheckCircle className="text-green-400" size={20} />
             </div>
@@ -122,7 +163,7 @@ export default function ImageUploader({ storagePath, currentUrl, onUploadComplet
           />
           <FaCloudUploadAlt className="mx-auto text-white/20 mb-3" size={40} />
           <p className="text-white/40 text-sm">Drag & drop or click to upload</p>
-          <p className="text-white/20 text-xs mt-1">PNG, JPG, WEBP up to 5MB</p>
+          <p className="text-white/20 text-xs mt-1">PNG, JPG, WEBP up to 10MB</p>
         </div>
       )}
     </div>
