@@ -4,6 +4,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { useSiteImage } from '../hooks/useSiteImage';
+import Values from '../components/Values';
 
 const timeline = [
   { year: '2022', desc: 'Gravity Tech World Established As A Part Of The Software Development Industry, We Are Into 4 Major Verticals. Viz - Mobile App Development.', side: 'left' },
@@ -11,15 +12,6 @@ const timeline = [
   { year: '2024', desc: 'Starting With Just The Of Us, We Attracted Talented To Make A Name For Ourselves And To Expand Our Reach To Reach Dedicated Individuals.', side: 'center' },
   { year: '2025', desc: 'With Growing Experience, Self Advanced Our Development Skills, Creating User-Friendly And Reliable Interfaces And Apps At The Tech Industry.', side: 'left' },
   { year: '2026', desc: 'Today, We Stand At Innovative, Advanced Technologies. Are Building Powerful Digital Products For The Future.', side: 'right' },
-];
-
-const values = [
-  { title: 'Vision', description: 'Our Vision Is To Become An Organization That Uses The Impact Of Digitalization To Empower People For Their Personal Growth...' },
-  { title: 'Mission', description: 'We Are On A Mission To Provide Our Customers With Unique Tech Solutions And Grow Their Business, While Being Valuable To Their End Users.' },
-  { title: 'Dedication', description: 'We Are Dedicated To Providing High-Quality Products And Services To Our Customers. We Strive To Exceed Expectations And Provide Exceptional Customer Service Every Time.' },
-  { title: 'Team Work', description: 'Teamwork Is The Cornerstone Of Any Successful Organization, As Working Together Helps To Promote Collaboration, Increase Efficiency, And Achieve Greater Results.' },
-  { title: 'Integrity', description: 'Integrity Is A Core Value For Any Business, No Matter How Big Or Small. It Means Having The Courage To Act Ethically And Do The Right Thing, Even When Its Hard.' },
-  { title: 'Quality', description: 'Quality Is A Major Factor When It Comes To Any Product Or Service. It Is Not Just About Meeting Customer Expectations But Exceeding Them And Setting Benchmarks In The Industry.' },
 ];
 
 export default function AboutPage() {
@@ -233,61 +225,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values */}
-      <section className="relative py-20 bg-primary-dark overflow-hidden">
-        <style>{`
-          .value-card {
-            background: #FFFFFF1A;
-            border: 2px solid transparent;
-            border-radius: 32px;
-            transition: all 0.3s ease;
-          }
-          .value-card:hover {
-            background: #45ADFF26;
-            border: 2px solid #45ADFF;
-            transform: translateY(-5px);
-          }
-          .gradient-circle {
-            background: 
-              linear-gradient(180deg, rgba(69, 173, 255, 0.06) 0%, rgba(69, 173, 255, 0) 100%) padding-box,
-              linear-gradient(143.78deg, #45ADFF 14.46%, #12102E 84.59%) border-box;
-            border: 4.64px solid transparent;
-            border-radius: 50%;
-          }
-        `}</style>
-
-        {/* Decorative Side Circles */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-          {/* Left Side */}
-          <div className="absolute gradient-circle w-[450px] h-[450px] -left-[250px] top-[40%]" />
-          <div className="absolute rounded-full bg-primary-dark w-[160px] h-[160px] left-[30px] top-[30%]" />
-          
-          {/* Right Side */}
-          <div className="absolute gradient-circle w-[450px] h-[450px] -right-[250px] top-[45%]" />
-          <div className="absolute rounded-full bg-primary-dark w-[160px] h-[160px] right-[50px] top-[35%]" />
-        </div>
-        
-        <div className="relative z-10 w-full mx-auto px-4 mt-10">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {values.map((item, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: i * 0.1 }}
-                className="value-card p-8 min-h-[260px] flex flex-col justify-start"
-              >
-                <h3 className="text-[26px] font-medium text-[#45ADFF] mb-2">{item.title}</h3>
-                <div className="flex items-center mb-6">
-                  <div className="h-[2px] w-12 bg-[#45ADFF]"></div>
-                  <div className="w-1.5 h-1.5 rounded-full bg-[#45ADFF] ml-1"></div>
-                </div>
-                <p className="text-white/80 text-[14px] leading-[1.8]">{item.description}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <Values />
 
       <Footer />
     </>
