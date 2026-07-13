@@ -6,7 +6,7 @@ const tags = [
 
 export default function MarqueeStrip() {
   return (
-    <div className="bg-primary-dark py-6 overflow-hidden">
+    <div className="bg-primary-dark py-6 overflow-hidden pb-16">
       {/* Row 1 - Left to Right */}
       <div className="flex mb-4 overflow-hidden">
         <div className="flex animate-marquee whitespace-nowrap">
