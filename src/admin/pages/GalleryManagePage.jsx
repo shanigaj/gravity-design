@@ -46,11 +46,15 @@ export default function GalleryManagePage() {
   const fetchPhotos = async (year) => {
     setLoading(true);
     try {
-      const q = query(collection(db, 'gallery'), where('year', '==', year), orderBy('createdAt', 'desc'));
+      const q = query(collection(db, 'gallery'), where('year', '==', year));
       const snap = await getDocs(q);
-      setPhotos(snap.docs.map(d => ({ id: d.id, ...d.data() })));
+      
+      const docs = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+      docs.sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis());
+      
+      setPhotos(docs);
     } catch (err) {
-      console.log('Firestore not ready');
+      console.error('Fetch error:', err);
       setPhotos([]);
     }
     setLoading(false);

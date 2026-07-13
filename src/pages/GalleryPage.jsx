@@ -30,12 +30,17 @@ export default function GalleryPage() {
   useEffect(() => {
     const fetchPhotos = async () => {
       try {
-        const q = query(collection(db, 'gallery'), where('year', '==', activeYear), orderBy('createdAt', 'desc'));
+        const q = query(collection(db, 'gallery'), where('year', '==', activeYear));
         const snap = await getDocs(q);
-        const urls = snap.docs.map(d => d.data().url);
+        
+        // Sort in JavaScript to avoid Firestore index requirement
+        const docs = snap.docs.map(d => d.data());
+        docs.sort((a, b) => b.createdAt?.toMillis() - a.createdAt?.toMillis());
+        
+        const urls = docs.map(d => d.url);
         setPhotos(urls.length > 0 ? urls : []);
       } catch (err) {
-        console.log('Firestore not ready, showing placeholders');
+        console.error('Fetch error:', err);
         setPhotos([]);
       }
     };
