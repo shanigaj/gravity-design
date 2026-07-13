@@ -11,6 +11,7 @@ export default function GalleryManagePage() {
   const [years, setYears] = useState(['2022', '2023', '2024']);
   const [newYear, setNewYear] = useState('');
   const [addingYear, setAddingYear] = useState(false);
+  const [uploadKey, setUploadKey] = useState(0);
 
   useEffect(() => {
     const fetchYears = async () => {
@@ -73,6 +74,7 @@ export default function GalleryManagePage() {
         createdAt: new Date(),
       });
       fetchPhotos(activeYear);
+      setUploadKey(prev => prev + 1); // Reset uploader for next photo
     } catch (err) {
       console.error('Error adding photo:', err);
     }
@@ -135,6 +137,7 @@ export default function GalleryManagePage() {
       {/* Add New Photo */}
       <div className="mb-8 max-w-sm">
         <ImageUploader
+          key={uploadKey}
           storagePath={`gallery/${activeYear}`}
           onUploadComplete={handleAddPhoto}
           label={`Add Photo to ${activeYear}`}
