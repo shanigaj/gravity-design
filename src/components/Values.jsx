@@ -29,91 +29,52 @@ const values = [
 
 export default function Values() {
   return (
-    <section className="relative py-20 bg-primary-dark overflow-hidden">
+    <section className="relative py-24 bg-[#0B1121] overflow-hidden">
       <style>{`
         .home-value-card {
-          background: #FFFFFF1A;
-          border: 2px solid transparent;
-          border-radius: 32px;
-          transition: all 0.3s ease;
+          background: #1A2235;
+          border: 1px solid transparent;
+          border-radius: 28px;
+          transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
         }
         .home-value-card:hover {
-          background: #45ADFF26;
-          border: 2px solid #45ADFF;
-          transform: translateY(-5px);
+          background: #1E293B;
+          border-color: #45ADFF;
+          transform: translateY(-8px);
+          box-shadow: 0 20px 40px -10px rgba(69, 173, 255, 0.15);
         }
-        .values-circle-large {
+        .bg-circle-left {
+          position: absolute;
+          width: 500px;
+          height: 500px;
+          left: -200px;
+          bottom: -150px;
+          background: linear-gradient(135deg, #1D4ED8 0%, #0F172A 100%);
           border-radius: 50%;
-          border: 7px solid transparent;
-          background: 
-            linear-gradient(180deg, rgba(69, 173, 255, 0.15) 0%, rgba(69, 173, 255, 0) 100%) padding-box,
-            linear-gradient(143.78deg, #45ADFF 14.46%, #12102E 84.59%) border-box;
+          opacity: 0.8;
+          z-index: 0;
         }
-        .values-circle-small {
+        .bg-circle-right {
+          position: absolute;
+          width: 350px;
+          height: 350px;
+          right: -100px;
+          top: 80px;
+          background: linear-gradient(135deg, #1D4ED8 0%, #0F172A 100%);
           border-radius: 50%;
-          background: linear-gradient(180deg, #45ADFF 0%, rgba(69, 173, 255, 0) 100%);
+          opacity: 0.6;
+          z-index: 0;
         }
       `}</style>
 
-      {/* Decorative Circles */}
+      {/* Sharp Decorative Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        {/* LEFT SIDE — Large ring at bottom-left */}
-        <div 
-          className="absolute values-circle-large"
-          style={{
-            width: '420px',
-            height: '420px',
-            left: '-180px',
-            bottom: '-100px',
-          }}
-        />
-        {/* LEFT SIDE — Small solid dot */}
-        <div 
-          className="absolute values-circle-small"
-          style={{
-            width: '18px',
-            height: '18px',
-            left: '120px',
-            bottom: '80px',
-            opacity: 0.6,
-          }}
-        />
-
-        {/* RIGHT SIDE — Medium ring at top-right */}
-        <div 
-          className="absolute values-circle-large"
-          style={{
-            width: '260px',
-            height: '260px',
-            right: '-60px',
-            top: '-30px',
-          }}
-        />
-        {/* RIGHT SIDE — Small solid dot */}
-        <div 
-          className="absolute values-circle-small"
-          style={{
-            width: '14px',
-            height: '14px',
-            right: '140px',
-            top: '60px',
-            opacity: 0.5,
-          }}
-        />
-        {/* Extra small accent dot near right circle */}
-        <div 
-          className="absolute values-circle-small"
-          style={{
-            width: '10px',
-            height: '10px',
-            right: '100px',
-            top: '160px',
-            opacity: 0.35,
-          }}
-        />
+        <div className="bg-circle-left"></div>
+        <div className="bg-circle-right"></div>
       </div>
 
-      <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {values.map((item, index) => (
             <motion.div
@@ -122,14 +83,23 @@ export default function Values() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: index * 0.1 }}
-              className="home-value-card p-8 min-h-[260px] flex flex-col justify-start"
+              className="home-value-card p-10 min-h-[300px] flex flex-col justify-start relative overflow-hidden"
             >
-              <h3 className="text-[26px] font-medium text-[#45ADFF] mb-2">{item.title}</h3>
-              <div className="flex items-center mb-6">
-                <div className="h-[2px] w-12 bg-[#45ADFF]"></div>
-                <div className="w-1.5 h-1.5 rounded-full bg-[#45ADFF] ml-1"></div>
+              {/* Title */}
+              <h3 className="text-[28px] font-semibold text-[#45ADFF] mb-3 font-heading tracking-wide">
+                {item.title}
+              </h3>
+              
+              {/* Custom Underline with center dot */}
+              <div className="relative flex items-center mb-8 w-[140px]">
+                <div className="h-[2px] w-full bg-[#45ADFF]/40 rounded-full"></div>
+                <div className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#45ADFF] shadow-[0_0_8px_#45ADFF]"></div>
               </div>
-              <p className="text-white/80 text-[14px] leading-[1.8]">{item.description}</p>
+              
+              {/* Description */}
+              <p className="text-[#94A3B8] text-[15px] leading-[1.8] font-light">
+                {item.description}
+              </p>
             </motion.div>
           ))}
         </div>
