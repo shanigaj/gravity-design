@@ -18,44 +18,9 @@ export default function GetInTouch() {
           Contact
         </span>
         
-        {/* Decorative circle - left bottom */}
-        <div 
-          className="absolute"
-          style={{
-            width: '400px',
-            height: '400px',
-            left: '-140px',
-            bottom: '-100px',
-            borderRadius: '50%',
-            border: '7px solid transparent',
-            background: 'linear-gradient(180deg, rgba(69,173,255,0.12) 0%, rgba(69,173,255,0) 100%) padding-box, linear-gradient(143.78deg, #45ADFF 14.46%, #12102E 84.59%) border-box',
-          }}
-        />
-        {/* Decorative circle - right top */}
-        <div 
-          className="absolute"
-          style={{
-            width: '300px',
-            height: '300px',
-            right: '-80px',
-            top: '-40px',
-            borderRadius: '50%',
-            border: '7px solid transparent',
-            background: 'linear-gradient(180deg, rgba(69,173,255,0.12) 0%, rgba(69,173,255,0) 100%) padding-box, linear-gradient(143.78deg, #45ADFF 14.46%, #12102E 84.59%) border-box',
-          }}
-        />
-        {/* Small dot accent - left */}
-        <div 
-          className="absolute rounded-full"
-          style={{
-            width: '12px',
-            height: '12px',
-            left: '180px',
-            bottom: '120px',
-            background: 'linear-gradient(180deg, #45ADFF 0%, rgba(69,173,255,0) 100%)',
-            opacity: 0.5,
-          }}
-        />
+        {/* Image Decorative Circles */}
+        <img src="/Group 7.png" alt="" className="absolute bottom-0 -translate-y-1/2 left-0 h-[250px] w-auto object-contain opacity-100" />
+        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-100" />
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">

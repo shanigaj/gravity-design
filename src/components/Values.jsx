@@ -48,8 +48,8 @@ export default function Values() {
 
       {/* Image Decorative Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <img src="/Group 7.png" alt="" className="absolute top-1/2 -translate-y-1/2 left-0 h-[550px] w-auto object-contain opacity-100" />
-        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[350px] w-auto object-contain opacity-100" />
+        <img src="/Group 7.png" alt="" className="absolute bottom-0 -translate-y-1/2 left-0 h-[250px] w-auto object-contain opacity-100" />
+        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-100" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
