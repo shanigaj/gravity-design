@@ -44,34 +44,12 @@ export default function Values() {
           transform: translateY(-8px);
           box-shadow: 0 20px 40px -10px rgba(69, 173, 255, 0.15);
         }
-        .bg-circle-left {
-          position: absolute;
-          width: 500px;
-          height: 500px;
-          left: -200px;
-          bottom: -150px;
-          background: linear-gradient(135deg, #1D4ED8 0%, #0F172A 100%);
-          border-radius: 50%;
-          opacity: 0.8;
-          z-index: 0;
-        }
-        .bg-circle-right {
-          position: absolute;
-          width: 350px;
-          height: 350px;
-          right: -100px;
-          top: 80px;
-          background: linear-gradient(135deg, #1D4ED8 0%, #0F172A 100%);
-          border-radius: 50%;
-          opacity: 0.6;
-          z-index: 0;
-        }
       `}</style>
 
-      {/* Sharp Decorative Circles */}
+      {/* Image Decorative Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <div className="bg-circle-left"></div>
-        <div className="bg-circle-right"></div>
+        <img src="/Group 7.png" alt="" className="absolute -left-[200px] bottom-[-150px] w-[500px] object-contain opacity-90" />
+        <img src="/Group 9.png" alt="" className="absolute -right-[100px] top-[80px] w-[350px] object-contain opacity-90" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
