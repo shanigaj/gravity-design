@@ -5,7 +5,7 @@ import { useSiteImage } from '../hooks/useSiteImage';
 export default function Hero() {
   const heroImage = useSiteImage('hero', 'url', '/images/OBJECTS.png');
   return (
-    <section id="home" className="relative pt-32 pb-4 overflow-hidden bg-primary-dark">
+    <section id="home" className="relative pt-32 pb-16 lg:pb-24 overflow-hidden bg-primary-dark">
       <ParticleNetwork />
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
