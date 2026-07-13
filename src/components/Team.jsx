@@ -55,15 +55,15 @@ export default function Team() {
         {/* Staggered Photo Grid */}
         <div className="max-w-5xl mx-auto mb-16">
           {/* Row 1 */}
-          <div className="grid grid-cols-4 gap-4 mb-4">
-            {renderPhoto(0, 'aspect-[4/5] mt-10')}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
+            {renderPhoto(0, 'aspect-[4/5] mt-6 md:mt-10')}
             {renderPhoto(1, 'aspect-[4/5]')}
             {renderPhoto(2, 'aspect-[4/5]')}
-            {renderPhoto(3, 'aspect-[4/5] mt-4')}
+            {renderPhoto(3, 'aspect-[4/5] mt-3 md:mt-4')}
           </div>
           
           {/* Row 2 - offset to right */}
-          <div className="grid grid-cols-4 gap-4 ml-16">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 ml-8 md:ml-16">
             {renderPhoto(4, 'aspect-[5/4]')}
             {renderPhoto(5, 'aspect-[5/4]')}
             {renderPhoto(6, 'aspect-[5/4]')}
@@ -82,9 +82,9 @@ export default function Team() {
             border: '1px solid rgba(69, 173, 255, 0.2)',
           }}
         >
-          <div className="flex justify-around items-center flex-wrap gap-6">
+          <div className="flex flex-col md:flex-row justify-around items-center flex-wrap gap-6 md:gap-4 text-center md:text-left">
             {features.map((feature, index) => (
-              <div key={index} className="flex items-center gap-4">
+              <div key={index} className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
                 <div className="w-12 h-12 rounded-full bg-[#45ADFF] flex items-center justify-center text-white flex-shrink-0">
                   {feature.icon}
                 </div>

@@ -112,7 +112,7 @@ export default function CareerPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: i * 0.1 }}
-                className="glass-card p-6 flex items-center justify-between"
+                className="glass-card p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4"
               >
                 <div>
                   <h3 className="text-lg font-bold text-white font-heading">{job.title}</h3>
@@ -120,7 +120,7 @@ export default function CareerPage() {
                 </div>
                 <Link
                   to={`/career/${job.slug}`}
-                  className="bg-blue-btn text-white px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-blue-btn/30 transition-all"
+                  className="bg-blue-btn text-white px-6 py-2 rounded-full text-sm font-medium hover:shadow-lg hover:shadow-blue-btn/30 transition-all text-center w-full sm:w-auto"
                 >
                   Apply Now
                 </Link>

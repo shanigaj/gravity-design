@@ -59,7 +59,7 @@ export default function WorkingProcess() {
                 className="flex flex-col items-center text-center relative"
               >
                 {/* Step number */}
-                <span className="text-[140px] font-bold text-[#FFFFFF0A] font-heading absolute top-1/2 left-1/2 -translate-x-[80%] -translate-y-[60%] z-0 leading-none select-none pointer-events-none">
+                <span className="text-[100px] md:text-[140px] font-bold text-[#FFFFFF0A] font-heading absolute top-1/2 left-1/2 -translate-x-[80%] -translate-y-[60%] z-0 leading-none select-none pointer-events-none">
                   {step.number}
                 </span>
                 

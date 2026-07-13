@@ -99,7 +99,7 @@ export default function GalleryPage() {
                 {marqueePhotos.map((item, i) => (
                   <div
                     key={`top-${i}`}
-                    className="w-[300px] h-[220px] mx-3 flex-shrink-0 rounded-[20px] bg-[#2A344A] border border-transparent overflow-hidden group cursor-pointer hover:border-accent transition-all duration-300 shadow-lg"
+                    className="w-[240px] md:w-[300px] h-[180px] md:h-[220px] mx-3 flex-shrink-0 rounded-[20px] bg-[#2A344A] border border-transparent overflow-hidden group cursor-pointer hover:border-accent transition-all duration-300 shadow-lg"
                   >
                     {photos.length > 0 && typeof item === 'string' ? (
                       <img src={item} alt={`Gallery ${activeYear}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
@@ -119,7 +119,7 @@ export default function GalleryPage() {
                 {marqueePhotos.map((item, i) => (
                   <div
                     key={`bottom-${i}`}
-                    className="w-[300px] h-[220px] mx-3 flex-shrink-0 rounded-[20px] bg-[#2A344A] border border-transparent overflow-hidden group cursor-pointer hover:border-accent transition-all duration-300 shadow-lg"
+                    className="w-[240px] md:w-[300px] h-[180px] md:h-[220px] mx-3 flex-shrink-0 rounded-[20px] bg-[#2A344A] border border-transparent overflow-hidden group cursor-pointer hover:border-accent transition-all duration-300 shadow-lg"
                   >
                     {photos.length > 0 && typeof item === 'string' ? (
                       <img src={item} alt={`Gallery ${activeYear}`} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
