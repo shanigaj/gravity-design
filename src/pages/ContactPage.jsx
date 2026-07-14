@@ -127,13 +127,7 @@ export default function ContactPage() {
                 </div>
               </div>
 
-              {/* Map Embed */}
-              <div className="glass-card overflow-hidden h-64 flex items-center justify-center">
-                <div className="text-center text-text-secondary">
-                  <MapPin size={48} className="text-accent mx-auto mb-3" />
-                  <p className="text-sm">Surat, Gujarat, India</p>
-                </div>
-              </div>
+
             </motion.div>
 
             {/* Contact Form */}
