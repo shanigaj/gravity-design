@@ -4,6 +4,7 @@ import ParticleNetwork from '../components/ParticleNetwork';
 import Navbar from '../components/Navbar';
 import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 import { db } from '../firebase';
+import Footer from '../components/Footer';
 import SEO from '../components/SEO';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
