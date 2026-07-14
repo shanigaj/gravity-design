@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { collection, getDocs, doc, getDoc, query, where, orderBy } from 'firebase/firestore';
+import { collection, getDocs, doc, getDoc, query, where } from 'firebase/firestore';
 import { db } from '../firebase';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
@@ -18,11 +18,14 @@ export default function GalleryPage() {
         if (snap.exists() && snap.data().years) {
           const fetchedYears = snap.data().years;
           setYears(fetchedYears);
-          if (!fetchedYears.includes(activeYear)) {
-            setActiveYear(fetchedYears[0] || '2022');
-          }
+          setActiveYear(prev => {
+            if (!fetchedYears.includes(prev)) {
+              return fetchedYears[0] || '2022';
+            }
+            return prev;
+          });
         }
-      } catch (err) { console.log('Firestore not ready for years'); }
+      } catch (err) { console.log('Firestore not ready for years', err); }
     };
     fetchYears();
   }, []);
@@ -48,9 +51,18 @@ export default function GalleryPage() {
   }, [activeYear]);
 
   // Duplicate photos for infinite marquee effect (need enough to fill screen)
-  const marqueePhotos = photos.length > 0 
-    ? [...photos, ...photos, ...photos] 
-    : [...Array(10)];
+  let marqueePhotos;
+  if (photos.length > 0) {
+    let duplicated = [...photos];
+    // Keep duplicating until we have enough to fill a large screen multiple times
+    while (duplicated.length < 15) {
+      duplicated = [...duplicated, ...photos];
+    }
+    // Duplicate the entire block once more so translateX(-50%) loops perfectly seamlessly
+    marqueePhotos = [...duplicated, ...duplicated];
+  } else {
+    marqueePhotos = [...Array(20)];
+  }
 
   return (
     <>

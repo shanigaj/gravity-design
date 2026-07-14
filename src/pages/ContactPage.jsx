@@ -83,8 +83,27 @@ export default function ContactPage() {
       </section>
 
       {/* Contact Section */}
-      <section className="py-20 bg-primary">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
+      <section className="relative py-20 bg-primary-dark overflow-hidden">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+          {/* "US" watermark text - left bottom */}
+          <span className="absolute left-4 bottom-8 text-[140px] font-extrabold text-white/[0.03] font-heading leading-none select-none tracking-wider">
+            US
+          </span>
+          {/* "Contact" watermark text - right side, vertical */}
+          <span 
+            className="absolute right-[-20px] top-1/2 -translate-y-1/2 text-[130px] font-extrabold text-white/[0.03] font-heading leading-none select-none tracking-wider"
+            style={{ writingMode: 'vertical-rl' }}
+          >
+            Contact
+          </span>
+          
+          {/* Image Decorative Circles */}
+          <img src="/Group 7.png" alt="" className="absolute bottom-0 -translate-y-1/2 left-0 h-[250px] w-auto object-contain opacity-100" />
+          <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-100" />
+        </div>
+
+        <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
             {/* Contact Info */}
             <motion.div

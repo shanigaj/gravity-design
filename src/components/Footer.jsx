@@ -26,10 +26,18 @@ export default function Footer() {
         </div>
       </div>
       {/* Background World Map Pattern */}
-      <img 
-        src="/images/Group-56.png" 
-        alt="World Map Background" 
-        className="absolute right-0 top-1/2 -translate-y-1/2 h-auto w-full max-w-lg object-contain pointer-events-none opacity-20"
+      <div 
+        className="absolute right-0 top-0 bottom-0 w-full md:w-[70%] max-w-[900px] pointer-events-none opacity-[0.15] bg-[#45ADFF]"
+        style={{
+          maskImage: 'url(/images/Group-56.png)',
+          maskSize: 'contain',
+          maskPosition: 'right center',
+          maskRepeat: 'no-repeat',
+          WebkitMaskImage: 'url(/images/Group-56.png)',
+          WebkitMaskSize: 'contain',
+          WebkitMaskPosition: 'right center',
+          WebkitMaskRepeat: 'no-repeat',
+        }}
       />
 
       {/* Left side glowing shadow */}

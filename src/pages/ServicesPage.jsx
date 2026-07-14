@@ -1,5 +1,5 @@
 import { motion } from 'framer-motion';
-import { FaAndroid, FaApple, FaPaintBrush, FaCode, FaVideo, FaShoppingCart, FaArrowRight } from 'react-icons/fa';
+import { FaArrowRight } from 'react-icons/fa';
 import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
