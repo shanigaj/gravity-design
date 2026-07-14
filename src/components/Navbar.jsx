@@ -42,13 +42,13 @@ export default function Navbar() {
                 onMouseLeave={() => link.hasDropdown && setCompanyOpen(false)}
               >
                 {link.hasDropdown ? (
-                  <button className={`flex items-center gap-1 text-sm font-medium transition-colors cursor-pointer ${
+                  <button className={`flex items-center gap-1 text-sm lg:text-base font-medium transition-colors cursor-pointer ${
                     companyOpen ? 'text-accent' : 'text-text-secondary hover:text-white'
                   }`}>
                     {link.name} <ChevronDown size={14} className={`transition-transform ${companyOpen ? 'rotate-180' : ''}`} />
                   </button>
                 ) : (
-                  <Link to={link.href} className={`text-sm font-medium transition-colors ${
+                  <Link to={link.href} className={`text-sm lg:text-base font-medium transition-colors ${
                     isActive(link.href) ? 'text-accent' : 'text-text-secondary hover:text-white'
                   }`}>
                     {link.name}
@@ -68,7 +68,7 @@ export default function Navbar() {
                           key={child.name}
                           to={child.href}
                           onClick={() => setCompanyOpen(false)}
-                          className="block px-4 py-3 text-sm text-text-secondary hover:text-accent hover:bg-primary-dark/50 transition-colors"
+                          className="block px-4 py-3 text-sm lg:text-base text-text-secondary hover:text-accent hover:bg-primary-dark/50 transition-colors"
                         >
                           {child.name}
                         </Link>
@@ -82,7 +82,7 @@ export default function Navbar() {
 
           {/* Tagline */}
           <div className="hidden lg:flex items-center">
-            <p className="text-sm text-white">
+            <p className="text-sm lg:text-base text-white">
               One Tap To <span className="text-accent font-semibold underline underline-offset-4 decoration-accent">Unlock Your Life</span>
             </p>
           </div>
