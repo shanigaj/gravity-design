@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 
 export default function AboutUs() {
   return (
@@ -28,16 +29,20 @@ export default function AboutUs() {
             Gravity Tech World Is One Of The Reckoned Web & Software Development Company In Surat. 
             Our Teams Have 3 Years Of Experience In The Development Of Software Applications & Systems.
           </motion.p>
-          <motion.a
+          <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
             transition={{ delay: 0.4 }}
-            href="#"
-            className="inline-block bg-white text-primary-dark px-8 py-3 rounded-full font-medium hover:bg-accent hover:text-white transition-all duration-300"
+            className="inline-block"
           >
-            More
-          </motion.a>
+            <Link
+              to="/about"
+              className="inline-block bg-white text-primary-dark px-8 py-3 rounded-full font-medium hover:bg-accent hover:text-white transition-all duration-300"
+            >
+              More
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>
