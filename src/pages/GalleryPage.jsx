@@ -95,7 +95,10 @@ export default function GalleryPage() {
           >
             {/* Top Row - Sliding Right */}
             <div className="flex overflow-hidden">
-              <div className="flex animate-marquee-reverse whitespace-nowrap items-center">
+              <div 
+                className="flex animate-marquee-reverse whitespace-nowrap items-center hover:[animation-play-state:paused]"
+                style={{ animationDuration: `${marqueePhotos.length * 1.5}s` }}
+              >
                 {marqueePhotos.map((item, i) => (
                   <div
                     key={`top-${i}`}
@@ -115,7 +118,10 @@ export default function GalleryPage() {
 
             {/* Bottom Row - Sliding Left */}
             <div className="flex overflow-hidden">
-              <div className="flex animate-marquee whitespace-nowrap items-center">
+              <div 
+                className="flex animate-marquee whitespace-nowrap items-center hover:[animation-play-state:paused]"
+                style={{ animationDuration: `${marqueePhotos.length * 1.5}s` }}
+              >
                 {marqueePhotos.map((item, i) => (
                   <div
                     key={`bottom-${i}`}

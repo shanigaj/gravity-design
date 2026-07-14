@@ -3,6 +3,7 @@ import { FaInstagram, FaFacebook, FaSkype, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useSiteImage } from '../hooks/useSiteImage';
+import { servicesData } from '../data/servicesData';
 
 export default function Footer() {
   const logoUrl = useSiteImage('settings', 'logoUrl', '/images/company-logo.png');
@@ -96,11 +97,11 @@ export default function Footer() {
           <div>
             <h4 className="text-[18px] font-medium text-[#45ADFF] mb-6">Services</h4>
             <ul className="space-y-4">
-              {['Android Apps', 'iOS Apps', 'Web Development', 'UI/UX Design', 'Video Animation', 'E-Commerce Development'].map((service) => (
-                <li key={service}>
-                  <a href="#" className="text-white/80 text-[14px] hover:text-[#45ADFF] transition-colors">
-                    {service}
-                  </a>
+              {servicesData.map((service) => (
+                <li key={service.slug}>
+                  <Link to={`/services/${service.slug}`} className="text-white/80 text-[14px] hover:text-[#45ADFF] transition-colors">
+                    {service.title}
+                  </Link>
                 </li>
               ))}
             </ul>
