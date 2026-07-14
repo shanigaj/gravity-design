@@ -2,18 +2,55 @@ import { useState } from 'react';
 import { motion } from 'framer-motion';
 import ParticleNetwork from '../components/ParticleNetwork';
 import Navbar from '../components/Navbar';
-import Footer from '../components/Footer';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 import SEO from '../components/SEO';
 import { Mail, Phone, MapPin, Send } from 'lucide-react';
 
 export default function ContactPage() {
   const [formData, setFormData] = useState({ name: '', email: '', phone: '', subject: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ type: '', text: '' });
 
   const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
-  const handleSubmit = (e) => {
+  
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    alert('Thank you! Your message has been sent.');
-    setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    setIsSubmitting(true);
+    setStatusMessage({ type: '', text: '' });
+    
+    try {
+      // Save to Firebase
+      await addDoc(collection(db, 'contactMessages'), {
+        ...formData,
+        source: 'Contact Page',
+        createdAt: serverTimestamp(),
+        status: 'new'
+      });
+
+      // Send Email via local backend
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          source: 'Contact Page'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email via backend');
+      }
+
+      setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });
+      setFormData({ name: '', email: '', phone: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error saving message:', error);
+      setStatusMessage({ type: 'error', text: 'Oops! Something went wrong. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setStatusMessage({ type: '', text: '' }), 5000);
+    }
   };
 
   return (
@@ -139,9 +176,19 @@ export default function ContactPage() {
                   className="w-full bg-primary-dark/60 border border-card-border rounded-lg px-4 py-3 text-white placeholder-text-muted text-sm focus:outline-none focus:border-accent transition-colors resize-none mb-6"
                 />
 
-                <button type="submit" className="w-full bg-blue-btn text-white py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-btn/30 transition-all cursor-pointer">
-                  <Send size={18} /> Send Message
+                <button 
+                  type="submit" 
+                  disabled={isSubmitting}
+                  className="w-full bg-blue-btn text-white py-3 rounded-full font-medium flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-btn/30 transition-all cursor-pointer disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  <Send size={18} /> {isSubmitting ? 'Sending...' : 'Send Message'}
                 </button>
+                
+                {statusMessage.text && (
+                  <div className={`mt-4 p-3 rounded-lg text-sm text-center font-medium ${statusMessage.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                    {statusMessage.text}
+                  </div>
+                )}
               </form>
             </motion.div>
           </div>

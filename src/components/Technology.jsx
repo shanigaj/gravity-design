@@ -6,8 +6,11 @@ import { SiFigma, SiReact, SiFlutter, SiKotlin, SiSwift, SiWordpress, SiNextdotj
 function AdobeBadge({ label, color }) {
   return (
     <div
-      className="w-10 h-10 rounded-lg flex items-center justify-center text-white text-xs font-bold"
-      style={{ background: color }}
+      className="w-[38px] h-[38px] flex items-center justify-center text-white text-[14px] font-bold"
+      style={{ 
+        background: color,
+        clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
+      }}
     >
       {label}
     </div>

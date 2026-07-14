@@ -1,7 +1,54 @@
+import { useState } from 'react';
 import { motion } from 'framer-motion';
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { db } from '../firebase';
 
 export default function GetInTouch() {
+  const [formData, setFormData] = useState({ name: '', email: '', subject: '', message: '' });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [statusMessage, setStatusMessage] = useState({ type: '', text: '' });
+
+  const handleChange = (e) => setFormData({ ...formData, [e.target.name]: e.target.value });
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setStatusMessage({ type: '', text: '' });
+
+    try {
+      // Save to Firebase
+      await addDoc(collection(db, 'contactMessages'), {
+        ...formData,
+        source: 'Home Page - Get In Touch',
+        createdAt: serverTimestamp(),
+        status: 'new'
+      });
+
+      // Send Email via local backend
+      const response = await fetch('http://localhost:5000/api/send-email', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ...formData,
+          source: 'Home Page - Get In Touch'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to send email via backend');
+      }
+
+      setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });
+      setFormData({ name: '', email: '', subject: '', message: '' });
+    } catch (error) {
+      console.error('Error saving message:', error);
+      setStatusMessage({ type: 'error', text: 'Oops! Something went wrong. Please try again.' });
+    } finally {
+      setIsSubmitting(false);
+      setTimeout(() => setStatusMessage({ type: '', text: '' }), 5000);
+    }
+  };
   return (
     <section className="relative py-20 bg-primary-dark overflow-hidden">
       {/* Decorative Background Elements */}
@@ -96,12 +143,16 @@ export default function GetInTouch() {
               backdropFilter: 'blur(20px)',
             }}
           >
-            <form className="space-y-5">
+            <form className="space-y-5" onSubmit={handleSubmit}>
               {/* Full Name */}
               <div>
                 <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Full Name</label>
                 <input
                   type="text"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter Full Name"
                   className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
                 />
@@ -112,6 +163,10 @@ export default function GetInTouch() {
                 <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Email</label>
                 <input
                   type="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter Your Email"
                   className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
                 />
@@ -122,6 +177,10 @@ export default function GetInTouch() {
                 <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Subject</label>
                 <input
                   type="text"
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleChange}
+                  required
                   placeholder="Enter Your Subject"
                   className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
                 />
@@ -131,6 +190,10 @@ export default function GetInTouch() {
               <div>
                 <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Your Message</label>
                 <textarea
+                  name="message"
+                  value={formData.message}
+                  onChange={handleChange}
+                  required
                   placeholder="Type Your Message"
                   rows={4}
                   className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors resize-none"
@@ -140,10 +203,17 @@ export default function GetInTouch() {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full py-4 rounded-xl bg-[#45ADFF] text-white font-semibold text-base hover:bg-[#3a9ae8] active:scale-[0.98] transition-all cursor-pointer shadow-lg shadow-[#45ADFF]/20"
+                disabled={isSubmitting}
+                className="w-full py-4 rounded-xl bg-[#45ADFF] text-white font-semibold text-base hover:bg-[#3a9ae8] active:scale-[0.98] transition-all cursor-pointer shadow-lg shadow-[#45ADFF]/20 disabled:opacity-70 disabled:cursor-not-allowed"
               >
-                Submit
+                {isSubmitting ? 'Sending...' : 'Submit'}
               </button>
+
+              {statusMessage.text && (
+                <div className={`mt-4 p-3 rounded-xl text-sm text-center font-medium ${statusMessage.type === 'success' ? 'bg-green-500/20 text-green-400' : 'bg-red-500/20 text-red-400'}`}>
+                  {statusMessage.text}
+                </div>
+              )}
             </form>
           </motion.div>
         </div>

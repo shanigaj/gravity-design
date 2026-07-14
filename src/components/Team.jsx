@@ -1,20 +1,19 @@
 import { motion } from 'framer-motion';
-import { FaUserCheck, FaBriefcase, FaCogs } from 'react-icons/fa';
 import { useTeamPhotos } from '../hooks/useSiteImage';
 
 const features = [
   {
-    icon: <FaUserCheck size={24} />,
+    icon: <img src="/Frame (1).png" alt="Talented Team" className="w-12 h-12 object-contain" />,
     title: 'Talented & Verified Team',
     subtitle: 'Confidence In Quality',
   },
   {
-    icon: <FaBriefcase size={24} />,
+    icon: <img src="/Frame (2).png" alt="Value Work" className="w-12 h-12 object-contain" />,
     title: 'We Value Our Work With',
     subtitle: 'Next-Generation Technologies',
   },
   {
-    icon: <FaCogs size={24} />,
+    icon: <img src="/Frame (3).png" alt="Adjustable" className="w-12 h-12 object-contain" />,
     title: 'Adjustable & Flexible',
     subtitle: 'Flexible Framework',
   },
@@ -47,13 +46,13 @@ export default function Team() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="text-3xl md:text-4xl font-bold font-heading text-[#45ADFF] text-center mb-12"
+          className="hidden text-3xl md:text-4xl font-bold font-heading text-[#45ADFF] text-center mb-12"
         >
           We Are A Team Of Certified<br />Developers
         </motion.h2>
 
         {/* Staggered Photo Grid */}
-        <div className="max-w-5xl mx-auto mb-16">
+        <div className="hidden max-w-5xl mx-auto mb-16">
           {/* Row 1 */}
           <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
             {renderPhoto(0, 'aspect-[4/5] mt-6 md:mt-10')}
@@ -85,7 +84,7 @@ export default function Team() {
           <div className="flex flex-col md:flex-row justify-around items-center flex-wrap gap-6 md:gap-4 text-center md:text-left">
             {features.map((feature, index) => (
               <div key={index} className="flex flex-col md:flex-row items-center gap-3 md:gap-4">
-                <div className="w-12 h-12 rounded-full bg-[#45ADFF] flex items-center justify-center text-white flex-shrink-0">
+                <div className="flex items-center justify-center flex-shrink-0">
                   {feature.icon}
                 </div>
                 <div>
