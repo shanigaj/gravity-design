@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import ParticleNetwork from './ParticleNetwork';
 import { useSiteImage } from '../hooks/useSiteImage';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const heroImage = useSiteImage('hero', 'url', '/images/OBJECTS.png');
@@ -47,12 +48,12 @@ export default function Hero() {
               transition={{ duration: 0.8, delay: 1.0 }}
               className="flex flex-wrap gap-4 mt-8"
             >
-              <a href="#services" className="bg-blue-btn text-white px-8 py-3 rounded-xl font-medium hover:shadow-lg hover:shadow-blue-btn/30 transition-all">
+              <Link to="/services" className="bg-blue-btn text-white px-8 py-3 rounded-xl font-medium hover:shadow-lg hover:shadow-blue-btn/30 transition-all">
                 Our Services
-              </a>
-              <a href="/contact" className="bg-transparent border border-[#45ADFF] text-white px-8 py-3 rounded-xl font-medium hover:bg-[#45ADFF]/10 transition-all">
+              </Link>
+              <Link to="/contact" className="bg-transparent border border-[#45ADFF] text-white px-8 py-3 rounded-xl font-medium hover:bg-[#45ADFF]/10 transition-all">
                 Contact Us
-              </a>
+              </Link>
             </motion.div>
           </div>
 
