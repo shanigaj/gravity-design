@@ -25,8 +25,8 @@ export default function GetInTouch() {
         status: 'new'
       });
 
-      // Send Email via local backend
-      const response = await fetch('http://localhost:5000/api/send-email', {
+      // Send Email via local/production backend
+      const response = await fetch('/api/send-email', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
