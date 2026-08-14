@@ -32,14 +32,14 @@ export default function Values() {
     <section className="relative py-24 bg-[#0B1121] overflow-hidden">
       <style>{`
         .home-value-card {
-          background: #1A2235;
-          border: 1px solid transparent;
+          background: linear-gradient(180deg, #212E4B 0%, #131A2B 100%);
+          border: 1px solid rgba(255,255,255,0.06);
           border-radius: 28px;
           transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-          box-shadow: 0 10px 30px -10px rgba(0,0,0,0.2);
+          box-shadow: 0 10px 30px -10px rgba(0,0,0,0.3);
         }
         .home-value-card:hover {
-          background: #1E293B;
+          background: linear-gradient(180deg, #26344F 0%, #182338 100%);
           border-color: #45ADFF;
           transform: translateY(-8px);
           box-shadow: 0 20px 40px -10px rgba(69, 173, 255, 0.15);
@@ -48,39 +48,48 @@ export default function Values() {
 
       {/* Image Decorative Circles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
-        <img src="/Group 7.png" alt="" className="absolute bottom-0 -translate-y-1/2 left-0 h-[250px] w-auto object-contain opacity-100" />
-        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-100" />
+        <img src="/Group 7.png" alt="" className="absolute top-[64%] -translate-y-1/2 left-[-5%] h-[380px] w-auto object-contain opacity-90" />
+        <img src="/Group 9.png" alt="" className="absolute top-[4%] right-[-5%] h-[260px] w-auto object-contain opacity-90" />
       </div>
 
       <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {values.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              className="home-value-card p-10 min-h-[300px] flex flex-col justify-start relative overflow-hidden"
-            >
-              {/* Title */}
-              <h3 className="text-[28px] font-semibold text-[#45ADFF] mb-3 font-heading tracking-wide">
-                {item.title}
-              </h3>
-              
-              {/* Custom Underline with center dot */}
-              <div className="relative flex items-center mb-8 w-[140px]">
-                <div className="h-[2px] w-full bg-[#45ADFF]/40 rounded-full"></div>
-                <div className="absolute left-1/2 -translate-x-1/2 w-2 h-2 rounded-full bg-[#45ADFF] shadow-[0_0_8px_#45ADFF]"></div>
-              </div>
-              
-              {/* Description */}
-              <p className="text-[#94A3B8] text-[15px] leading-[1.8] font-light">
-                {item.description}
-              </p>
-            </motion.div>
-          ))}
-        </div>
+        {/* Staggered layout: top row left-aligned, bottom row shifted right (Figma) */}
+        {[values.slice(0, 3), values.slice(3, 6)].map((row, rowIndex) => (
+          <div
+            key={rowIndex}
+            className={`grid grid-cols-1 md:grid-cols-3 gap-8 ${rowIndex === 0 ? 'md:pr-[11%]' : 'md:pl-[11%] mt-8'}`}
+          >
+            {row.map((item, i) => {
+              const index = rowIndex * 3 + i;
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 30 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: i * 0.1 }}
+                  className="home-value-card p-10 min-h-[300px] flex flex-col justify-start relative overflow-hidden"
+                >
+                  {/* Title */}
+                  <h3 className="text-[28px] font-semibold text-[#45ADFF] mb-3 font-heading tracking-wide">
+                    {item.title}
+                  </h3>
+
+                  {/* Custom Underline with dot at the end (Figma style) */}
+                  <div className="relative flex items-center mb-8 w-[72px]">
+                    <div className="h-[2px] w-full bg-[#45ADFF]/50 rounded-full"></div>
+                    <div className="absolute right-0 translate-x-1/2 w-2 h-2 rounded-full bg-[#45ADFF] shadow-[0_0_8px_#45ADFF]"></div>
+                  </div>
+
+                  {/* Description */}
+                  <p className="text-[#94A3B8] text-[15px] leading-[1.8] font-light">
+                    {item.description}
+                  </p>
+                </motion.div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </section>
   );

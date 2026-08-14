@@ -1,10 +1,70 @@
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
-import { FaAndroid, FaApple, FaPaintBrush, FaCode, FaVideo, FaShoppingCart } from 'react-icons/fa';
+import { FaAndroid, FaApple, FaShoppingCart } from 'react-icons/fa';
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
+
+/* Custom service icons recreated to match the Figma design.
+   Cut-out details use the icon-circle blue (#45ADFF) so they read as holes. */
+
+// UI/UX — vector pen tool with bezier anchor points
+function PenToolIcon() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M10 20 C14 12 34 12 38 20" stroke="white" strokeWidth="2.8" strokeLinecap="round" />
+      <circle cx="10" cy="20" r="2.8" fill="white" />
+      <circle cx="38" cy="20" r="2.8" fill="white" />
+      <rect x="17.5" y="21" width="13" height="3.8" rx="1.9" fill="white" />
+      <path d="M18 25 L30 25 L24 41 Z" fill="white" />
+      <circle cx="24" cy="29.5" r="2" fill="#45ADFF" />
+      <path d="M24 32 L24 37" stroke="#45ADFF" strokeWidth="1.6" strokeLinecap="round" />
+    </svg>
+  );
+}
+
+// Web Development — monitor with text lines, gear and code brackets
+function WebDevIcon() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="7" y="10" width="34" height="23" rx="3" stroke="white" strokeWidth="2.6" />
+      {/* text lines */}
+      <rect x="12" y="15" width="9" height="2" rx="1" fill="white" />
+      <rect x="12" y="19" width="9" height="2" rx="1" fill="white" />
+      <rect x="12" y="23" width="7" height="2" rx="1" fill="white" />
+      <rect x="12" y="27" width="9" height="2" rx="1" fill="white" />
+      {/* gear */}
+      <g transform="translate(32 16)">
+        {[0, 45, 90, 135].map((a) => (
+          <rect key={a} x="-1" y="-5.4" width="2" height="2.8" rx="0.5" fill="white" transform={`rotate(${a})`} />
+        ))}
+        <circle r="3.4" fill="white" />
+        <circle r="1.5" fill="#45ADFF" />
+      </g>
+      {/* code brackets */}
+      <path d="M28 25 L25.5 28 L28 31" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M34 25 L36.5 28 L34 31" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" />
+      <path d="M32.4 24 L30 32" stroke="white" strokeWidth="2" strokeLinecap="round" />
+      {/* stand */}
+      <path d="M20.5 33 L27.5 33 L29 38 L19 38 Z" fill="white" />
+      <rect x="16" y="38" width="16" height="2.6" rx="1.3" fill="white" />
+    </svg>
+  );
+}
+
+// Video Animation — media player with play button
+function VideoIcon() {
+  return (
+    <svg width="30" height="30" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <rect x="8" y="14" width="32" height="20" rx="5" fill="white" />
+      <circle cx="14.5" cy="19" r="1.5" fill="#45ADFF" />
+      <circle cx="14.5" cy="24" r="1.5" fill="#45ADFF" />
+      <circle cx="14.5" cy="29" r="1.5" fill="#45ADFF" />
+      <path d="M22 19 L33 24 L22 29 Z" fill="#45ADFF" />
+    </svg>
+  );
+}
 
 const services = [
   {
@@ -18,17 +78,17 @@ const services = [
     description: 'Strive To Build Innovative IOS Apps, Believing To Deliver The Best IOS Application Development Service.',
   },
   {
-    icon: <FaPaintBrush size={28} />,
+    icon: <PenToolIcon />,
     title: 'UI/UX Creative Design',
     description: 'Get User Friendly, Robust, Advanced And Attractive Designs For Website, Application And Games.',
   },
   {
-    icon: <FaCode size={28} />,
+    icon: <WebDevIcon />,
     title: 'Web Development',
     description: 'Get Innovative, SEO Friendly, Responsive And User Friendly Website Development Services.',
   },
   {
-    icon: <FaVideo size={28} />,
+    icon: <VideoIcon />,
     title: 'Video Animation',
     description: 'Animated Videos, Complete With Intangible Assets That Help Communicate Your Message.',
   },

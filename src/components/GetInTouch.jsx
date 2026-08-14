@@ -65,9 +65,24 @@ export default function GetInTouch() {
           Contact
         </span>
         
-        {/* Image Decorative Circles */}
-        <img src="/Group 7.png" alt="" className="absolute bottom-0 -translate-y-1/2 left-0 h-[250px] w-auto object-contain opacity-100" />
-        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-100" />
+        {/* Decorative eye / lens shape (Figma background design) */}
+        <svg
+          className="absolute left-[-170px] top-1/2 -translate-y-1/2 w-[640px] h-[400px] pointer-events-none"
+          viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg"
+        >
+          <defs>
+            <linearGradient id="gitLens" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stopColor="#45ADFF" stopOpacity="0.22" />
+              <stop offset="100%" stopColor="#45ADFF" stopOpacity="0" />
+            </linearGradient>
+          </defs>
+          <path
+            d="M8 190 C 150 25, 470 25, 612 190 C 470 355, 150 355, 8 190 Z"
+            fill="url(#gitLens)"
+          />
+        </svg>
+        {/* Right side subtle glow */}
+        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-60" />
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
@@ -88,45 +103,30 @@ export default function GetInTouch() {
             {/* Contact Details */}
             <div className="space-y-10">
               {/* Call Us */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full border border-[#45ADFF]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <FaPhoneAlt className="text-[#45ADFF]" size={15} />
-                </div>
-                <div>
-                  <p className="text-[#45ADFF] text-xs font-semibold uppercase tracking-[0.15em] mb-1.5 flex items-center gap-2">
-                    <span>CALL US</span>
-                  </p>
-                  <p className="text-white text-[15px] font-medium">+91 90540 74748</p>
-                </div>
+              <div>
+                <p className="text-[#45ADFF] text-sm font-semibold uppercase tracking-[0.12em] mb-2 flex items-center gap-2.5">
+                  <FaPhoneAlt size={16} /> <span>CALL US</span>
+                </p>
+                <p className="text-white text-[15px] font-medium">+91 90540 74748</p>
               </div>
 
               {/* Email Us */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full border border-[#45ADFF]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <FaEnvelope className="text-[#45ADFF]" size={15} />
-                </div>
-                <div>
-                  <p className="text-[#45ADFF] text-xs font-semibold uppercase tracking-[0.15em] mb-1.5 flex items-center gap-2">
-                    <span>EMAIL US</span>
-                  </p>
-                  <p className="text-white text-[15px] font-medium">info@gravitytechworld.com</p>
-                </div>
+              <div>
+                <p className="text-[#45ADFF] text-sm font-semibold uppercase tracking-[0.12em] mb-2 flex items-center gap-2.5">
+                  <FaEnvelope size={16} /> <span>EMAIL US</span>
+                </p>
+                <p className="text-white text-[15px] font-medium">info@gravitytechworld.com</p>
               </div>
 
               {/* Location */}
-              <div className="flex items-start gap-4">
-                <div className="w-10 h-10 rounded-full border border-[#45ADFF]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
-                  <FaMapMarkerAlt className="text-[#45ADFF]" size={15} />
-                </div>
-                <div>
-                  <p className="text-[#45ADFF] text-xs font-semibold uppercase tracking-[0.15em] mb-1.5 flex items-center gap-2">
-                    <span>LOCATION</span>
-                  </p>
-                  <p className="text-white text-[15px] font-medium leading-relaxed">
-                    207 / 208 Shreenathji Icon, VIP Circle,<br />
-                    Uttran, Surat, Gujarat - 394105
-                  </p>
-                </div>
+              <div>
+                <p className="text-[#45ADFF] text-sm font-semibold uppercase tracking-[0.12em] mb-2 flex items-center gap-2.5">
+                  <FaMapMarkerAlt size={16} /> <span>LOCATION</span>
+                </p>
+                <p className="text-white text-[15px] font-medium leading-relaxed">
+                  207 / 208 Shreenathji Icon, VIP Circle,<br />
+                  Uttran, Surat, Gujarat - 394105
+                </p>
               </div>
             </div>
           </motion.div>
@@ -136,10 +136,9 @@ export default function GetInTouch() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-[28px] p-8 md:p-10"
+            className="rounded-[30px] p-8 md:p-10"
             style={{
-              background: 'rgba(255,255,255,0.04)',
-              border: '1px solid rgba(69,173,255,0.15)',
+              background: 'rgba(69,173,255,0.15)',
               backdropFilter: 'blur(20px)',
             }}
           >
@@ -154,7 +153,7 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Full Name"
-                  className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
+                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
                 />
               </div>
 
@@ -168,7 +167,7 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Your Email"
-                  className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
+                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
                 />
               </div>
 
@@ -182,7 +181,7 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Your Subject"
-                  className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
+                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
                 />
               </div>
 
@@ -196,7 +195,7 @@ export default function GetInTouch() {
                   required
                   placeholder="Type Your Message"
                   rows={4}
-                  className="w-full bg-[#FFFFFF08] border border-white/10 rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors resize-none"
+                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors resize-none"
                 />
               </div>
 

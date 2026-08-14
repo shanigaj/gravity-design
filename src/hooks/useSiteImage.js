@@ -37,7 +37,7 @@ export function useSiteImage(docId, field = 'url', fallback = '') {
  * Hook to fetch team photos array
  */
 export function useTeamPhotos() {
-  const [photos, setPhotos] = useState(Array(8).fill(''));
+  const [photos, setPhotos] = useState(Array(7).fill(''));
 
   useEffect(() => {
     let unsub;
@@ -45,7 +45,7 @@ export function useTeamPhotos() {
       unsub = onSnapshot(doc(db, 'siteImages', 'team'), (snap) => {
         if (snap.exists() && snap.data().photos) {
           const p = snap.data().photos;
-          setPhotos([...p, ...Array(8 - p.length).fill('')].slice(0, 8));
+          setPhotos([...p, ...Array(Math.max(0, 7 - p.length)).fill('')].slice(0, 7));
         }
       }, () => {});
     } catch {}

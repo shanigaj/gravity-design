@@ -1,4 +1,4 @@
-import { FaAndroid, FaApple, FaPaintBrush, FaCode, FaVideo, FaShoppingCart } from 'react-icons/fa';
+import { FaAndroid, FaApple, FaPenNib, FaLaptopCode, FaVideo, FaShoppingCart } from 'react-icons/fa';
 
 export const servicesData = [
   {
@@ -38,7 +38,7 @@ export const servicesData = [
   },
   {
     slug: 'ui-ux-design',
-    icon: <FaPaintBrush size={32} />,
+    icon: <FaPenNib size={32} />,
     title: 'UI/UX Creative Design',
     description: 'Get user-friendly, robust, advanced, and attractive designs for websites, applications, and games.',
     color: '#FF2A5F',
@@ -55,7 +55,7 @@ export const servicesData = [
   },
   {
     slug: 'web-development',
-    icon: <FaCode size={32} />,
+    icon: <FaLaptopCode size={32} />,
     title: 'Web Development',
     description: 'Get innovative, SEO friendly, responsive, and highly secure website development services.',
     color: '#45ADFF',

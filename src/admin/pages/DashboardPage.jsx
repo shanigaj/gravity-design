@@ -36,7 +36,7 @@ export default function DashboardPage() {
 
   const cards = [
     { label: 'Hero Image', value: stats.hero ? 'Uploaded' : 'Not set', icon: <FaImage size={24} />, color: stats.hero ? 'text-green-400' : 'text-yellow-400' },
-    { label: 'Team Photos', value: `${stats.team} / 8`, icon: <FaUsers size={24} />, color: 'text-[#45ADFF]' },
+    { label: 'Team Photos', value: `${stats.team} / 7`, icon: <FaUsers size={24} />, color: 'text-[#45ADFF]' },
     { label: 'Gallery Photos', value: stats.gallery.toString(), icon: <FaImages size={24} />, color: 'text-[#45ADFF]' },
     { label: 'Blog Posts', value: stats.blog.toString(), icon: <FaBlog size={24} />, color: 'text-[#45ADFF]' },
   ];

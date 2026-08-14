@@ -1,47 +1,69 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { SiFigma, SiReact, SiFlutter, SiKotlin, SiSwift, SiWordpress, SiNextdotjs, SiNodedotjs, SiMongodb, SiMysql, SiFirebase } from 'react-icons/si';
+import {
+  SiFigma, SiReact, SiFlutter, SiKotlin, SiAndroidstudio, SiXcode,
+  SiPhp, SiNodedotjs, SiLaravel, SiPython, SiRuby, SiCodeigniter,
+  SiMongodb, SiMysql, SiFirebase, SiSqlite, SiMariadb,
+} from 'react-icons/si';
+import { FaJava, FaMagento } from 'react-icons/fa';
 
-// Custom Adobe icon badge component
-function AdobeBadge({ label, color }) {
+// Adobe app-icon: small dark rounded tile with accent letters, centered on the white circle
+function AdobeIcon({ label, bg, accent }) {
   return (
     <div
-      className="w-[38px] h-[38px] flex items-center justify-center text-white text-[14px] font-bold"
-      style={{ 
-        background: color,
-        clipPath: 'polygon(25% 0%, 75% 0%, 100% 25%, 100% 75%, 75% 100%, 25% 100%, 0% 75%, 0% 25%)'
-      }}
+      className="w-[26px] h-[26px] rounded-[6px] flex items-center justify-center text-[11px] font-bold"
+      style={{ background: bg, color: accent }}
     >
       {label}
     </div>
   );
 }
 
+// Multicolor Figma logo
+function FigmaLogo() {
+  return (
+    <svg width="18" height="27" viewBox="0 0 38 57" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M19 28.5a9.5 9.5 0 1 1 19 0 9.5 9.5 0 0 1-19 0z" fill="#1ABCFE" />
+      <path d="M0 47.5A9.5 9.5 0 0 1 9.5 38H19v9.5a9.5 9.5 0 1 1-19 0z" fill="#0ACF83" />
+      <path d="M19 0v19h9.5a9.5 9.5 0 1 0 0-19H19z" fill="#FF7262" />
+      <path d="M0 9.5A9.5 9.5 0 0 0 9.5 19H19V0H9.5A9.5 9.5 0 0 0 0 9.5z" fill="#F24E1E" />
+      <path d="M0 28.5A9.5 9.5 0 0 0 9.5 38H19V19H9.5A9.5 9.5 0 0 0 0 28.5z" fill="#A259FF" />
+    </svg>
+  );
+}
+
 const categories = {
   'Design Tools': [
-    { icon: <AdobeBadge label="Ps" color="#31A8FF" />, name: 'Photoshop' },
-    { icon: <SiFigma size={28} className="text-[#F24E1E]" />, name: 'Figma' },
-    { icon: <AdobeBadge label="Ai" color="#FF9A00" />, name: 'Illustrator' },
-    { icon: <AdobeBadge label="Ae" color="#9999FF" />, name: 'After Effects' },
-    { icon: <AdobeBadge label="Pr" color="#9999FF" />, name: 'Premiere Pro' },
-    { icon: <AdobeBadge label="Xd" color="#FF61F6" />, name: 'XD' },
+    { icon: <AdobeIcon label="Ps" bg="#001E36" accent="#31A8FF" />, name: 'Photoshop' },
+    { icon: <FigmaLogo />, name: 'Figma' },
+    { icon: <AdobeIcon label="Ai" bg="#330000" accent="#FF9A00" />, name: 'Illustrator' },
+    { icon: <AdobeIcon label="Ae" bg="#00005B" accent="#9999FF" />, name: 'After Effects' },
+    { icon: <AdobeIcon label="Pr" bg="#00005B" accent="#EA77FF" />, name: 'Premiere Pro' },
+    { icon: <AdobeIcon label="Xd" bg="#470137" accent="#FF61F6" />, name: 'XD' },
   ],
   'App Development': [
-    { icon: <SiReact size={28} className="text-[#61DAFB]" />, name: 'React Native' },
-    { icon: <SiFlutter size={28} className="text-[#02569B]" />, name: 'Flutter' },
-    { icon: <SiKotlin size={28} className="text-[#7F52FF]" />, name: 'Kotlin' },
-    { icon: <SiSwift size={28} className="text-[#FA7343]" />, name: 'Swift' },
+    { icon: <SiAndroidstudio size={24} className="text-[#3DDC84]" />, name: 'Android Studio' },
+    { icon: <SiFlutter size={22} className="text-[#02569B]" />, name: 'Flutter' },
+    { icon: <SiXcode size={24} className="text-[#147EFB]" />, name: 'Xcode' },
+    { icon: <SiReact size={24} className="text-[#61DAFB]" />, name: 'React Native' },
+    { icon: <SiKotlin size={22} className="text-[#7F52FF]" />, name: 'Kotlin' },
+    { icon: <FaJava size={22} className="text-[#EA2D2E]" />, name: 'Java' },
   ],
   'Web Development': [
-    { icon: <SiReact size={28} className="text-[#61DAFB]" />, name: 'React' },
-    { icon: <SiNextdotjs size={28} className="text-white" />, name: 'Next.js' },
-    { icon: <SiNodedotjs size={28} className="text-[#339933]" />, name: 'Node.js' },
-    { icon: <SiWordpress size={28} className="text-[#21759B]" />, name: 'WordPress' },
+    { icon: <SiPhp size={26} className="text-[#777BB4]" />, name: 'PHP' },
+    { icon: <SiNodedotjs size={24} className="text-[#339933]" />, name: 'Node JS' },
+    { icon: <SiLaravel size={22} className="text-[#FF2D20]" />, name: 'Laravel' },
+    { icon: <SiPython size={24} className="text-[#3776AB]" />, name: 'Python' },
+    { icon: <SiRuby size={22} className="text-[#CC342D]" />, name: 'Ruby' },
+    { icon: <SiCodeigniter size={24} className="text-[#EF4223]" />, name: 'CodeIgniter' },
   ],
   'Data Management': [
-    { icon: <SiMongodb size={28} className="text-[#47A248]" />, name: 'MongoDB' },
-    { icon: <SiMysql size={28} className="text-[#4479A1]" />, name: 'MySQL' },
-    { icon: <SiFirebase size={28} className="text-[#FFCA28]" />, name: 'Firebase' },
+    { icon: <SiMongodb size={24} className="text-[#47A248]" />, name: 'MongoDB' },
+    { icon: <SiMysql size={26} className="text-[#4479A1]" />, name: 'MySQL' },
+    { icon: <SiFirebase size={22} className="text-[#FFA000]" />, name: 'Firebase' },
+    { icon: <SiSqlite size={26} className="text-[#003B57]" />, name: 'SQLite' },
+    { icon: <FaMagento size={22} className="text-[#EE672F]" />, name: 'Magento' },
+    { icon: <SiMariadb size={28} className="text-[#003545]" />, name: 'MariaDB' },
   ],
 };
 
@@ -94,7 +116,7 @@ export default function Technology() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className="flex flex-wrap justify-center gap-8"
+            className="flex flex-wrap justify-center gap-x-10 gap-y-6"
           >
             {categories[activeTab].map((tool, index) => (
               <motion.div
@@ -104,7 +126,7 @@ export default function Technology() {
                 transition={{ delay: index * 0.05 }}
                 className="flex items-center gap-3 group cursor-pointer"
               >
-                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center border border-card-border group-hover:border-accent transition-colors overflow-hidden">
+                <div className="w-11 h-11 rounded-full bg-white flex items-center justify-center overflow-hidden shadow-md group-hover:ring-2 group-hover:ring-accent transition-all">
                   {tool.icon}
                 </div>
                 <span className="text-text-secondary group-hover:text-white transition-colors text-sm font-medium">{tool.name}</span>

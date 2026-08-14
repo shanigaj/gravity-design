@@ -46,27 +46,35 @@ export default function Team() {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="hidden text-3xl md:text-4xl font-bold font-heading text-[#45ADFF] text-center mb-12"
+          className="text-3xl md:text-4xl font-bold font-heading text-[#45ADFF] text-center mb-12"
         >
           We Are A Team Of Certified<br />Developers
         </motion.h2>
 
-        {/* Staggered Photo Grid */}
-        <div className="hidden max-w-5xl mx-auto mb-16">
-          {/* Row 1 */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mb-3 md:mb-4">
-            {renderPhoto(0, 'aspect-[4/5] mt-6 md:mt-10')}
-            {renderPhoto(1, 'aspect-[4/5]')}
-            {renderPhoto(2, 'aspect-[4/5]')}
-            {renderPhoto(3, 'aspect-[4/5] mt-3 md:mt-4')}
+        {/* Staggered Masonry Photo Grid (matches Figma; aspect-ratios keep it
+            proportional and responsive from mobile → desktop) */}
+        <div className="max-w-5xl mx-auto mb-16 flex justify-center gap-2 sm:gap-3 md:gap-5">
+          {/* Column 1 — single card, vertically centered */}
+          <div className="flex-1 flex flex-col justify-center">
+            {renderPhoto(0, 'aspect-[5/6]')}
           </div>
-          
-          {/* Row 2 - offset to right */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 ml-8 md:ml-16">
-            {renderPhoto(4, 'aspect-[5/4]')}
-            {renderPhoto(5, 'aspect-[5/4]')}
-            {renderPhoto(6, 'aspect-[5/4]')}
-            {renderPhoto(7, 'aspect-[5/4]')}
+
+          {/* Column 2 */}
+          <div className="flex-1 flex flex-col gap-2 sm:gap-3 md:gap-5">
+            {renderPhoto(1, 'aspect-[4/3]')}
+            {renderPhoto(2, 'aspect-[4/3]')}
+          </div>
+
+          {/* Column 3 — nudged down slightly */}
+          <div className="flex-1 flex flex-col gap-2 sm:gap-3 md:gap-5 mt-3 sm:mt-5 md:mt-8">
+            {renderPhoto(3, 'aspect-[4/3]')}
+            {renderPhoto(4, 'aspect-[4/3]')}
+          </div>
+
+          {/* Column 4 — short top card, normal bottom card */}
+          <div className="flex-1 flex flex-col gap-2 sm:gap-3 md:gap-5 mt-5 sm:mt-8 md:mt-12">
+            {renderPhoto(5, 'aspect-[16/9]')}
+            {renderPhoto(6, 'aspect-[4/3]')}
           </div>
         </div>
 
