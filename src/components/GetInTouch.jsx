@@ -53,39 +53,54 @@ export default function GetInTouch() {
     <section className="relative py-20 bg-primary-dark overflow-hidden">
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
-        {/* "US" watermark text - left bottom */}
-        <span className="absolute left-4 bottom-8 text-[140px] font-extrabold text-white/[0.03] font-heading leading-none select-none tracking-wider">
-          US
-        </span>
-        {/* "Contact" watermark text - right side, vertical */}
-        <span 
-          className="absolute right-[-20px] top-1/2 -translate-y-1/2 text-[130px] font-extrabold text-white/[0.03] font-heading leading-none select-none tracking-wider"
-          style={{ writingMode: 'vertical-rl' }}
-        >
-          Contact
-        </span>
-        
-        {/* Decorative eye / lens shape (Figma background design) */}
+        {/* Left lens shape (Figma Vector 1) - radial gradient eye */}
         <svg
-          className="absolute left-[-170px] top-1/2 -translate-y-1/2 w-[640px] h-[400px] pointer-events-none"
+          className="absolute left-[-11%] top-[38%] -translate-y-1/2 w-[560px] h-[490px] md:w-[720px] md:h-[620px] pointer-events-none"
           viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <radialGradient id="gitLens" cx="50%" cy="50%" r="62%">
+            <radialGradient id="gitLens1" cx="50%" cy="50%" r="62%">
               <stop offset="0%" stopColor="#45ADFF" />
               <stop offset="100%" stopColor="#296899" />
             </radialGradient>
           </defs>
-          <path
-            d="M8 190 C 150 25, 470 25, 612 190 C 470 355, 150 355, 8 190 Z"
-            fill="url(#gitLens)"
-            opacity="0.3"
-          />
+          <path d="M8 190 C 150 25, 470 25, 612 190 C 470 355, 150 355, 8 190 Z" fill="url(#gitLens1)" opacity="0.3" />
         </svg>
-        {/* Right side subtle glow */}
-        <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-60" />
-        {/* Plus decoration (Figma) */}
-        <span className="absolute right-[5%] top-[8%] text-[#45ADFF]/25 text-5xl md:text-6xl font-extralight select-none leading-none">+</span>
+
+        {/* Right lens shape (Figma Vector 2) - rotated radial gradient */}
+        <svg
+          className="absolute right-[-7%] top-[-12%] w-[380px] h-[330px] md:w-[500px] md:h-[440px] pointer-events-none"
+          viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg"
+          style={{ transform: 'rotate(-126deg)' }}
+        >
+          <defs>
+            <radialGradient id="gitLens2" cx="50%" cy="50%" r="62%">
+              <stop offset="0%" stopColor="#45ADFF" />
+              <stop offset="100%" stopColor="#296899" />
+            </radialGradient>
+          </defs>
+          <path d="M8 190 C 150 25, 470 25, 612 190 C 470 355, 150 355, 8 190 Z" fill="url(#gitLens2)" opacity="0.3" />
+        </svg>
+
+        {/* "US" outlined watermark - bottom left (Figma: 1.5px #FFF stroke, 50%) */}
+        <span
+          className="absolute left-2 md:left-8 bottom-2 md:bottom-6 font-heading font-medium leading-none select-none"
+          style={{ fontSize: 'clamp(80px, 12vw, 180px)', color: 'transparent', WebkitTextStroke: '1.5px #FFFFFF', opacity: 0.5 }}
+        >
+          US
+        </span>
+
+        {/* "Contact" outlined vertical watermark - right (Figma: 1.5px #FFF stroke, 60%) */}
+        <span
+          className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 font-heading font-medium leading-none select-none"
+          style={{ fontSize: 'clamp(78px, 11vw, 180px)', color: 'transparent', WebkitTextStroke: '1.5px #FFFFFF', opacity: 0.6, writingMode: 'vertical-rl' }}
+        >
+          Contact
+        </span>
+
+        {/* Plus decorations (Figma) */}
+        <span className="absolute right-[6%] top-[9%] text-[#45ADFF]/30 text-5xl md:text-6xl font-thin select-none leading-none">+</span>
+        <span className="absolute right-[9%] top-[44%] text-[#45ADFF]/20 text-3xl md:text-4xl font-thin select-none leading-none">+</span>
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
