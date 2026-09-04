@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { FaInstagram, FaFacebook, FaSkype, FaLinkedin } from 'react-icons/fa';
+import { FaInstagram, FaFacebook, FaLinkedin } from 'react-icons/fa';
 import { FaXTwitter } from 'react-icons/fa6';
 import { Mail, Phone, MapPin } from 'lucide-react';
 import { useSiteImage } from '../hooks/useSiteImage';
@@ -13,7 +13,7 @@ export default function Footer() {
       <div className="w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32 pb-12">
         <div className="rounded-[24px] overflow-hidden border border-white/10 shadow-2xl">
           <iframe
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3720.5!2d72.8311!3d21.1702!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be04e59411d1563%3A0x764f0b8e1f4d8e0!2sShreenathji+Icon!5e0!3m2!1sen!2sin!4v1700000000000!5m2!1sen!2sin"
+            src="https://www.google.com/maps?q=Gravity+Tech+World,+Shreenathji+Icon,+207-208,+VIP+Cir,+Utran,+Surat,+Gujarat+394105&z=16&output=embed"
             width="100%"
             height="250"
             style={{ border: 0 }}
@@ -66,13 +66,20 @@ export default function Footer() {
             </p>
             <div className="flex space-x-3">
               {[
-                { icon: <FaInstagram size={18} />, href: '#' },
-                { icon: <FaFacebook size={18} />, href: '#' },
-                { icon: <FaXTwitter size={18} />, href: '#' },
-                { icon: <FaSkype size={18} />, href: '#' },
-                { icon: <FaLinkedin size={18} />, href: '#' },
+                { icon: <FaInstagram size={18} />, href: 'https://www.instagram.com/gravity_tech_world', label: 'Instagram' },
+                { icon: <FaFacebook size={18} />, href: 'https://www.facebook.com/share/1EbSkhb69M/', label: 'Facebook' },
+                { icon: <FaXTwitter size={18} />, href: 'https://x.com/GT_World_', label: 'X (Twitter)' },
+                { icon: <FaLinkedin size={18} />, href: 'https://www.linkedin.com/in/gravity-tech-world-a2979a245', label: 'LinkedIn' },
               ].map((social, i) => (
-                <a key={i} href={social.href} className="w-[34px] h-[34px] rounded-full bg-white text-[#0B1224] flex items-center justify-center hover:bg-[#45ADFF] hover:text-white transition-colors duration-300">
+                <a
+                  key={i}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={social.label}
+                  title={social.label}
+                  className="w-[34px] h-[34px] rounded-full bg-white text-[#0B1224] flex items-center justify-center hover:bg-[#45ADFF] hover:text-white transition-colors duration-300"
+                >
                   {social.icon}
                 </a>
               ))}

@@ -17,6 +17,7 @@ export default function HomePage() {
     <>
       <SEO
         title="Home"
+        path="/"
         description="Gravity Tech World - One of the reckoned Web & Software Development Company in Surat. Combine your idea with technology."
         keywords="Gravity Tech World, Web Development, App Development, Software Development, Surat"
       />

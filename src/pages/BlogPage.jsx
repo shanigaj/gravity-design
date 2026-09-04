@@ -28,7 +28,7 @@ export default function BlogPage() {
 
   return (
     <>
-      <SEO title="Blog" description="Read the latest news and insights from Gravity Tech World." />
+      <SEO title="Blog" path="/blog" description="Read the latest news and insights from Gravity Tech World." />
       <Navbar />
 
       <section className="pt-32 pb-20 bg-primary-dark min-h-screen">

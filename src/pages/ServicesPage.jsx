@@ -30,6 +30,7 @@ export default function ServicesPage() {
     <>
       <SEO
         title="Our Services"
+        path="/services"
         description="Explore the wide range of services provided by Gravity Tech World including Web Development, App Development, UI/UX Design, and more."
         keywords="Services, Web Development, App Development, UI/UX Design, Android, iOS"
       />

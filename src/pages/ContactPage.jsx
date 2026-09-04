@@ -56,7 +56,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEO title="Contact" description="Get in touch with Gravity Tech World. We'd love to hear about your project." />
+      <SEO title="Contact" path="/contact" description="Get in touch with Gravity Tech World. We'd love to hear about your project." />
       <Navbar />
 
       {/* Hero Banner */}
@@ -121,7 +121,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Our Office</h3>
-                    <p className="text-text-secondary text-sm">Surat, Gujarat, India - 395006</p>
+                    <p className="text-text-secondary text-sm">207 / 208 Shreenathji Icon, VIP Circle,<br />Digital Valley (Uttran), Surat, Gujarat - 394105</p>
                   </div>
                 </div>
 
@@ -131,7 +131,7 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <h3 className="text-white font-semibold mb-1">Phone</h3>
-                    <p className="text-text-secondary text-sm">+91 12345 67890</p>
+                    <p className="text-text-secondary text-sm">+91 90540 74748</p>
                   </div>
                 </div>
 

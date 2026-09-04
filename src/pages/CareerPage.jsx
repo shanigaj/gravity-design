@@ -32,7 +32,7 @@ export default function CareerPage() {
 
   return (
     <>
-      <SEO title="Career" description="Join Gravity Tech World - Explore career opportunities in web and app development." />
+      <SEO title="Career" path="/career" description="Join Gravity Tech World - Explore career opportunities in web and app development." />
       <Navbar />
 
       {/* Hero */}

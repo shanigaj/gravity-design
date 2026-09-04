@@ -1,0 +1,21 @@
+rules_version = '2';
+
+service firebase.storage {
+  match /b/{bucket}/o {
+
+    // 🔒 Same admin email as in firestore.rules.
+    function isAdmin() {
+      return request.auth != null
+        && request.auth.token.email == 'admin@gravitytechworld.com';
+    }
+
+    // Images: anyone can VIEW (public website), only admin can UPLOAD/DELETE.
+    // Uploads are limited to images under 10 MB.
+    match /{allPaths=**} {
+      allow read: if true;
+      allow write: if isAdmin()
+        && request.resource.size < 10 * 1024 * 1024
+        && request.resource.contentType.matches('image/.*');
+    }
+  }
+}

@@ -66,7 +66,7 @@ export default function GalleryPage() {
 
   return (
     <>
-      <SEO title="Gallery" description="Explore events, celebrations and memories at Gravity Tech World." />
+      <SEO title="Gallery" path="/gallery" description="Explore events, celebrations and memories at Gravity Tech World." />
       <Navbar />
 
       <section className="pt-28 pb-20 bg-primary-dark min-h-screen">
