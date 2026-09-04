@@ -50,7 +50,7 @@ export default function GetInTouch() {
     }
   };
   return (
-    <section className="relative py-20 bg-primary-dark overflow-hidden">
+    <section className="relative py-20 bg-primary-dark overflow-hidden" style={{ fontFamily: "'Figtree', sans-serif" }}>
       {/* Decorative Background Elements */}
       <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
         {/* Left lens shape (Figma Vector 1) - radial gradient eye */}
@@ -84,7 +84,7 @@ export default function GetInTouch() {
 
         {/* "US" outlined watermark - bottom left (Figma: 1.5px #FFF stroke, 50%) */}
         <span
-          className="absolute left-2 md:left-8 bottom-2 md:bottom-6 font-heading font-medium leading-none select-none"
+          className="absolute left-2 md:left-8 bottom-2 md:bottom-6 font-medium leading-none select-none"
           style={{ fontSize: 'clamp(80px, 12vw, 180px)', color: 'transparent', WebkitTextStroke: '1.5px #FFFFFF', opacity: 0.5 }}
         >
           US
@@ -92,7 +92,7 @@ export default function GetInTouch() {
 
         {/* "Contact" outlined vertical watermark - right (Figma: 1.5px #FFF stroke, 60%) */}
         <span
-          className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 font-heading font-medium leading-none select-none"
+          className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 font-medium leading-none select-none"
           style={{ fontSize: 'clamp(78px, 11vw, 180px)', color: 'transparent', WebkitTextStroke: '1.5px #FFFFFF', opacity: 0.6, writingMode: 'vertical-rl' }}
         >
           Contact
@@ -104,7 +104,7 @@ export default function GetInTouch() {
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[5fr_8fr] gap-10 lg:gap-12 items-start">
           
           {/* Left Side - Contact Info */}
           <motion.div
@@ -113,10 +113,10 @@ export default function GetInTouch() {
             viewport={{ once: true }}
             className="pt-4"
           >
-            <h2 className="text-[42px] sm:text-5xl lg:text-6xl xl:text-[80px] font-bold font-heading text-[#45ADFF] leading-[1.05] mb-3">
+            <h2 className="text-[40px] sm:text-5xl lg:text-[54px] xl:text-[66px] 2xl:text-[80px] font-bold text-[#45ADFF] leading-[1.02] mb-3 whitespace-nowrap">
               Get In Touch
             </h2>
-            <p className="text-white/50 text-sm md:text-base mb-14">Let Us Know How We Can Help</p>
+            <p className="text-white/60 text-base md:text-lg mb-16">Let Us Know How We Can Help</p>
 
             {/* Contact Details */}
             <div className="space-y-10">
@@ -154,7 +154,7 @@ export default function GetInTouch() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-[40px] md:rounded-[50px] p-8 md:p-10"
+            className="rounded-[40px] md:rounded-[50px] p-6 sm:p-8 md:p-12 border border-white/[0.07]"
             style={{
               background: 'rgba(69,173,255,0.15)',
               backdropFilter: 'blur(45px)',
@@ -164,7 +164,7 @@ export default function GetInTouch() {
             <form className="space-y-5" onSubmit={handleSubmit}>
               {/* Full Name */}
               <div>
-                <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Full Name</label>
+                <label className="text-[#45ADFF] text-base font-medium mb-2.5 block">Full Name</label>
                 <input
                   type="text"
                   name="name"
@@ -172,13 +172,13 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Full Name"
-                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
+                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Email</label>
+                <label className="text-[#45ADFF] text-base font-medium mb-2.5 block">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -186,13 +186,13 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Your Email"
-                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
+                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
                 />
               </div>
 
               {/* Subject */}
               <div>
-                <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Subject</label>
+                <label className="text-[#45ADFF] text-base font-medium mb-2.5 block">Subject</label>
                 <input
                   type="text"
                   name="subject"
@@ -200,13 +200,13 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Your Subject"
-                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors"
+                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
                 />
               </div>
 
               {/* Your Message */}
               <div>
-                <label className="text-[#45ADFF] text-sm font-medium mb-2.5 block">Your Message</label>
+                <label className="text-[#45ADFF] text-base font-medium mb-2.5 block">Your Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -214,7 +214,7 @@ export default function GetInTouch() {
                   required
                   placeholder="Type Your Message"
                   rows={4}
-                  className="w-full bg-white/10 border border-white/[0.05] rounded-xl px-5 py-3.5 text-white text-sm placeholder:text-white/25 focus:outline-none focus:border-[#45ADFF]/50 transition-colors resize-none"
+                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-sm placeholder:text-white/30 focus:outline-none focus:border-[#45ADFF]/60 transition-colors resize-none"
                 />
               </div>
 
