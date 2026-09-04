@@ -71,18 +71,21 @@ export default function GetInTouch() {
           viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
-            <linearGradient id="gitLens" x1="0" y1="0" x2="1" y2="0">
-              <stop offset="0%" stopColor="#45ADFF" stopOpacity="0.22" />
-              <stop offset="100%" stopColor="#45ADFF" stopOpacity="0" />
-            </linearGradient>
+            <radialGradient id="gitLens" cx="50%" cy="50%" r="62%">
+              <stop offset="0%" stopColor="#45ADFF" />
+              <stop offset="100%" stopColor="#296899" />
+            </radialGradient>
           </defs>
           <path
             d="M8 190 C 150 25, 470 25, 612 190 C 470 355, 150 355, 8 190 Z"
             fill="url(#gitLens)"
+            opacity="0.3"
           />
         </svg>
         {/* Right side subtle glow */}
         <img src="/Group 9.png" alt="" className="absolute top-[80px] right-0 h-[150px] w-auto object-contain opacity-60" />
+        {/* Plus decoration (Figma) */}
+        <span className="absolute right-[5%] top-[8%] text-[#45ADFF]/25 text-5xl md:text-6xl font-extralight select-none leading-none">+</span>
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
@@ -95,10 +98,10 @@ export default function GetInTouch() {
             viewport={{ once: true }}
             className="pt-4"
           >
-            <h2 className="text-3xl md:text-4xl font-bold font-heading text-[#45ADFF] mb-2">
+            <h2 className="text-[42px] sm:text-5xl lg:text-6xl xl:text-[80px] font-bold font-heading text-[#45ADFF] leading-[1.05] mb-3">
               Get In Touch
             </h2>
-            <p className="text-white/50 text-sm mb-14">Let Us Know How We Can Help</p>
+            <p className="text-white/50 text-sm md:text-base mb-14">Let Us Know How We Can Help</p>
 
             {/* Contact Details */}
             <div className="space-y-10">
@@ -136,10 +139,11 @@ export default function GetInTouch() {
             initial={{ opacity: 0, x: 30 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
-            className="rounded-[30px] p-8 md:p-10"
+            className="rounded-[40px] md:rounded-[50px] p-8 md:p-10"
             style={{
               background: 'rgba(69,173,255,0.15)',
-              backdropFilter: 'blur(20px)',
+              backdropFilter: 'blur(45px)',
+              WebkitBackdropFilter: 'blur(45px)',
             }}
           >
             <form className="space-y-5" onSubmit={handleSubmit}>
