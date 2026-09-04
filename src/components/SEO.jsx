@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
 const SITE_NAME = 'Gravity Tech World';
-const SITE_URL = 'https://www.gravitytechworld.com';
+const SITE_URL = 'https://gravitytechworld.com';
 const DEFAULT_DESC =
   'Gravity Tech World - a leading web design, web development and software company in Surat. Fast, responsive, SEO-friendly and secure websites, apps and custom software.';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
