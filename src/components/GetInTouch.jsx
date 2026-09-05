@@ -48,11 +48,11 @@ export default function GetInTouch() {
   };
   return (
     <section className="relative py-14 md:py-20 bg-primary-dark overflow-hidden" style={{ fontFamily: "'Figtree', sans-serif" }}>
-      {/* Decorative Background Elements (desktop only - avoids overlap on mobile) */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden hidden lg:block">
-        {/* Left lens shape (Figma Vector 1) - radial gradient eye */}
+      {/* Decorative Background Elements */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+        {/* Left lens shape (Figma Vector 1) - radial gradient eye - responsive */}
         <svg
-          className="absolute left-[-11%] top-[38%] -translate-y-1/2 w-[560px] h-[490px] md:w-[720px] md:h-[620px] pointer-events-none"
+          className="absolute left-[-32%] sm:left-[-20%] lg:left-[-11%] top-[46%] lg:top-[38%] -translate-y-1/2 w-[400px] sm:w-[520px] lg:w-[720px] h-[360px] sm:h-[460px] lg:h-[620px] pointer-events-none"
           viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg"
         >
           <defs>
@@ -64,9 +64,9 @@ export default function GetInTouch() {
           <path d="M8 190 C 150 25, 470 25, 612 190 C 470 355, 150 355, 8 190 Z" fill="url(#gitLens1)" opacity="0.3" />
         </svg>
 
-        {/* Right lens shape (Figma Vector 2) - rotated radial gradient */}
+        {/* Right lens shape (Figma Vector 2) - rotated radial gradient (desktop) */}
         <svg
-          className="absolute right-[-7%] top-[-12%] w-[380px] h-[330px] md:w-[500px] md:h-[440px] pointer-events-none"
+          className="hidden lg:block absolute right-[-7%] top-[-12%] w-[380px] h-[330px] md:w-[500px] md:h-[440px] pointer-events-none"
           viewBox="0 0 640 400" fill="none" xmlns="http://www.w3.org/2000/svg"
           style={{ transform: 'rotate(-126deg)' }}
         >
@@ -89,15 +89,15 @@ export default function GetInTouch() {
 
         {/* "Contact" outlined vertical watermark - right (Figma: 1.5px #FFF stroke, 60%) */}
         <span
-          className="absolute right-0 md:right-2 top-1/2 -translate-y-1/2 font-medium leading-none select-none"
+          className="hidden lg:block absolute right-0 md:right-2 top-1/2 -translate-y-1/2 font-medium leading-none select-none"
           style={{ fontSize: 'clamp(78px, 11vw, 180px)', color: 'transparent', WebkitTextStroke: '1.5px #FFFFFF', opacity: 0.6, writingMode: 'vertical-rl' }}
         >
           Contact
         </span>
 
-        {/* Plus decorations (Figma) */}
-        <span className="absolute right-[6%] top-[9%] text-[#45ADFF]/30 text-5xl md:text-6xl font-thin select-none leading-none">+</span>
-        <span className="absolute right-[9%] top-[44%] text-[#45ADFF]/20 text-3xl md:text-4xl font-thin select-none leading-none">+</span>
+        {/* Plus decorations (Figma - desktop) */}
+        <span className="hidden lg:block absolute right-[6%] top-[9%] text-[#45ADFF]/30 text-5xl md:text-6xl font-thin select-none leading-none">+</span>
+        <span className="hidden lg:block absolute right-[9%] top-[44%] text-[#45ADFF]/20 text-3xl md:text-4xl font-thin select-none leading-none">+</span>
       </div>
 
       <div className="relative z-10 w-full mx-auto px-4 sm:px-8 lg:px-16 2xl:px-32">
