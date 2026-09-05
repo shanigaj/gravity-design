@@ -6,7 +6,7 @@ const stats = [
   { number: 1000, suffix: '+', label: 'Happy Customers' },
   { number: 1000, suffix: '+', label: 'Lines Of Code' },
   { number: 1000, suffix: '+', label: 'Project Completed' },
-  { number: 1000, suffix: '+', label: 'Award Wons' },
+  { number: 1000, suffix: '+', label: 'Award Wins' },
 ];
 
 function Counter({ target, suffix }) {
@@ -15,27 +15,32 @@ function Counter({ target, suffix }) {
   const started = useRef(false);
 
   useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting && !started.current) {
-          started.current = true;
-          let current = 0;
-          const increment = target / 60;
-          const timer = setInterval(() => {
-            current += increment;
-            if (current >= target) {
-              setCount(target);
-              clearInterval(timer);
-            } else {
-              setCount(Math.floor(current));
-            }
-          }, 30);
+    let interval;
+    const run = () => {
+      if (started.current) return;
+      started.current = true;
+      let current = 0;
+      const increment = target / 60;
+      interval = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          setCount(target);
+          clearInterval(interval);
+        } else {
+          setCount(Math.floor(current));
         }
-      },
-      { threshold: 0.5 }
+      }, 25);
+    };
+
+    const el = ref.current;
+    const observer = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) run(); },
+      { threshold: 0.2 }
     );
-    if (ref.current) observer.observe(ref.current);
-    return () => observer.disconnect();
+    if (el) observer.observe(el);
+    // Fallback: guarantee the numbers animate even if the observer never fires
+    const fallback = setTimeout(run, 2500);
+    return () => { observer.disconnect(); clearTimeout(interval); clearTimeout(fallback); };
   }, [target]);
 
   return (

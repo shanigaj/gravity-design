@@ -20,7 +20,7 @@ export default function AboutPage() {
 
   return (
     <>
-      <SEO title="About Us" path="/about" description="Learn about Gravity Tech World - A leading web and software development company in Surat." />
+      <SEO title="About Us" path="/about" description="Learn about Gravity Tech World - a Surat-based web and software development company building fast, responsive, secure websites, mobile apps and custom software with a passionate expert team." keywords="about Gravity Tech World, software company Surat, web development team Surat, IT company Surat" />
       <Navbar />
 
       {/* Hero with team photo */}

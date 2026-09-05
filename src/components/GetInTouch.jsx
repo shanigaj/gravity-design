@@ -25,18 +25,15 @@ export default function GetInTouch() {
         status: 'new'
       });
 
-      // Send Email via local/production backend
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          source: 'Home Page - Get In Touch'
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send email via backend');
+      // Send email notification (best-effort — message is already saved to Firebase)
+      try {
+        await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...formData, source: 'Home Page - Get In Touch' }),
+        });
+      } catch (emailErr) {
+        console.warn('Email notification failed (message still saved):', emailErr);
       }
 
       setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });

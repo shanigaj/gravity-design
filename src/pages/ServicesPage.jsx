@@ -31,8 +31,8 @@ export default function ServicesPage() {
       <SEO
         title="Our Services"
         path="/services"
-        description="Explore the wide range of services provided by Gravity Tech World including Web Development, App Development, UI/UX Design, and more."
-        keywords="Services, Web Development, App Development, UI/UX Design, Android, iOS"
+        description="Gravity Tech World services in Surat: Android & iOS app development, web development, e-commerce, UI/UX design, video animation and custom software for growing businesses."
+        keywords="web development services Surat, Android app development, iOS app development, e-commerce development, UI UX design, video animation, custom software Surat"
       />
       <Navbar />
       

@@ -29,18 +29,15 @@ export default function ContactPage() {
         status: 'new'
       });
 
-      // Send Email via local/production backend
-      const response = await fetch('/api/send-email', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          ...formData,
-          source: 'Contact Page'
-        }),
-      });
-
-      if (!response.ok) {
-        throw new Error('Failed to send email via backend');
+      // Send email notification (best-effort — message is already saved to Firebase)
+      try {
+        await fetch('/api/send-email', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ ...formData, source: 'Contact Page' }),
+        });
+      } catch (emailErr) {
+        console.warn('Email notification failed (message still saved):', emailErr);
       }
 
       setStatusMessage({ type: 'success', text: 'Thank you! Your message has been sent successfully.' });
@@ -56,7 +53,7 @@ export default function ContactPage() {
 
   return (
     <>
-      <SEO title="Contact" path="/contact" description="Get in touch with Gravity Tech World. We'd love to hear about your project." />
+      <SEO title="Contact" path="/contact" description="Contact Gravity Tech World in Surat for website development, mobile apps, UI/UX design and software solutions. Call +91 90540 74748 or email info@gravitytechworld.com." keywords="contact Gravity Tech World, web development Surat contact, software company Surat contact, hire developers Surat" />
       <Navbar />
 
       {/* Hero Banner */}
