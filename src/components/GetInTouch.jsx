@@ -113,32 +113,32 @@ export default function GetInTouch() {
             <h2 className="text-4xl sm:text-5xl lg:text-[54px] xl:text-[66px] 2xl:text-[80px] font-bold text-[#45ADFF] leading-[1.05] mb-3 whitespace-normal lg:whitespace-nowrap">
               Get In Touch
             </h2>
-            <p className="text-white/70 text-lg sm:text-xl md:text-2xl mb-8 md:mb-14">Let Us Know How We Can Help</p>
+            <p className="text-white/90 text-lg md:text-2xl xl:text-[30px] leading-snug mb-8 md:mb-14">Let Us Know How We Can Help</p>
 
             {/* Contact Details */}
-            <div className="space-y-6 md:space-y-10">
+            <div className="space-y-7 md:space-y-11">
               {/* Call Us */}
               <div>
-                <p className="text-[#45ADFF] text-lg md:text-xl font-semibold uppercase tracking-[0.08em] mb-2.5 flex items-center gap-3">
-                  <FaPhoneAlt size={22} /> <span>CALL US</span>
+                <p className="text-[#45ADFF] text-xl md:text-2xl xl:text-[30px] font-medium uppercase tracking-[0.04em] mb-2 flex items-center gap-3">
+                  <FaPhoneAlt size={32} /> <span>CALL US</span>
                 </p>
-                <p className="text-white text-lg md:text-xl font-semibold">+91 90540 74748</p>
+                <p className="text-white text-xl md:text-2xl xl:text-[30px] font-bold">+91 90540 74748</p>
               </div>
 
               {/* Email Us */}
               <div>
-                <p className="text-[#45ADFF] text-lg md:text-xl font-semibold uppercase tracking-[0.08em] mb-2.5 flex items-center gap-3">
-                  <FaEnvelope size={22} /> <span>EMAIL US</span>
+                <p className="text-[#45ADFF] text-xl md:text-2xl xl:text-[30px] font-medium uppercase tracking-[0.04em] mb-2 flex items-center gap-3">
+                  <FaEnvelope size={32} /> <span>EMAIL US</span>
                 </p>
-                <p className="text-white text-lg md:text-xl font-semibold">info@gravitytechworld.com</p>
+                <p className="text-white text-xl md:text-2xl xl:text-[30px] font-bold">info@gravitytechworld.com</p>
               </div>
 
               {/* Location */}
               <div>
-                <p className="text-[#45ADFF] text-lg md:text-xl font-semibold uppercase tracking-[0.08em] mb-2.5 flex items-center gap-3">
-                  <FaMapMarkerAlt size={22} /> <span>LOCATION</span>
+                <p className="text-[#45ADFF] text-xl md:text-2xl xl:text-[30px] font-medium uppercase tracking-[0.04em] mb-2 flex items-center gap-3">
+                  <FaMapMarkerAlt size={32} /> <span>LOCATION</span>
                 </p>
-                <p className="text-white text-lg md:text-xl font-semibold leading-relaxed">
+                <p className="text-white text-xl md:text-2xl xl:text-[30px] font-bold leading-relaxed">
                   207 / 208 Shreenathji Icon, VIP Circle,<br />
                   Uttran, Surat, Gujarat - 394105
                 </p>
@@ -161,7 +161,7 @@ export default function GetInTouch() {
             <form className="space-y-5" onSubmit={handleSubmit}>
               {/* Full Name */}
               <div>
-                <label className="text-[#45ADFF] text-lg font-medium mb-2.5 block">Full Name</label>
+                <label className="text-[#45ADFF] text-lg md:text-xl xl:text-[26px] font-medium mb-3 block">Full Name</label>
                 <input
                   type="text"
                   name="name"
@@ -169,13 +169,13 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Full Name"
-                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-base placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
+                  className="w-full bg-white/[0.10] border border-white/10 rounded-[15px] px-6 py-4 md:py-5 text-white text-base md:text-lg placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
                 />
               </div>
 
               {/* Email */}
               <div>
-                <label className="text-[#45ADFF] text-lg font-medium mb-2.5 block">Email</label>
+                <label className="text-[#45ADFF] text-lg md:text-xl xl:text-[26px] font-medium mb-3 block">Email</label>
                 <input
                   type="email"
                   name="email"
@@ -183,13 +183,13 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Your Email"
-                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-base placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
+                  className="w-full bg-white/[0.10] border border-white/10 rounded-[15px] px-6 py-4 md:py-5 text-white text-base md:text-lg placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
                 />
               </div>
 
               {/* Subject */}
               <div>
-                <label className="text-[#45ADFF] text-lg font-medium mb-2.5 block">Subject</label>
+                <label className="text-[#45ADFF] text-lg md:text-xl xl:text-[26px] font-medium mb-3 block">Subject</label>
                 <input
                   type="text"
                   name="subject"
@@ -197,13 +197,13 @@ export default function GetInTouch() {
                   onChange={handleChange}
                   required
                   placeholder="Enter Your Subject"
-                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-base placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
+                  className="w-full bg-white/[0.10] border border-white/10 rounded-[15px] px-6 py-4 md:py-5 text-white text-base md:text-lg placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors"
                 />
               </div>
 
               {/* Your Message */}
               <div>
-                <label className="text-[#45ADFF] text-lg font-medium mb-2.5 block">Your Message</label>
+                <label className="text-[#45ADFF] text-lg md:text-xl xl:text-[26px] font-medium mb-3 block">Your Message</label>
                 <textarea
                   name="message"
                   value={formData.message}
@@ -211,7 +211,7 @@ export default function GetInTouch() {
                   required
                   placeholder="Type Your Message"
                   rows={4}
-                  className="w-full bg-white/[0.06] border border-white/10 rounded-[10px] px-5 py-4 text-white text-base placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors resize-none"
+                  className="w-full bg-white/[0.10] border border-white/10 rounded-[15px] px-6 py-4 md:py-5 text-white text-base md:text-lg placeholder:text-white/35 focus:outline-none focus:border-[#45ADFF]/60 transition-colors resize-none"
                 />
               </div>
 
@@ -219,7 +219,7 @@ export default function GetInTouch() {
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 rounded-[10px] bg-[#5CB8FF] text-white font-semibold text-lg hover:bg-[#45ADFF] active:scale-[0.98] transition-all cursor-pointer shadow-lg shadow-[#5CB8FF]/20 disabled:opacity-70 disabled:cursor-not-allowed"
+                className="w-full py-4 md:py-5 rounded-[15px] bg-[#5CB8FF] text-white font-semibold text-lg md:text-xl hover:bg-[#45ADFF] active:scale-[0.98] transition-all cursor-pointer shadow-lg shadow-[#5CB8FF]/20 disabled:opacity-70 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? 'Sending...' : 'Submit'}
               </button>
