@@ -47,9 +47,9 @@ export default function GetInTouch() {
     }
   };
   return (
-    <section className="relative py-20 bg-primary-dark overflow-hidden" style={{ fontFamily: "'Figtree', sans-serif" }}>
-      {/* Decorative Background Elements */}
-      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden">
+    <section className="relative py-14 md:py-20 bg-primary-dark overflow-hidden" style={{ fontFamily: "'Figtree', sans-serif" }}>
+      {/* Decorative Background Elements (desktop only - avoids overlap on mobile) */}
+      <div className="absolute inset-0 pointer-events-none z-0 overflow-hidden hidden lg:block">
         {/* Left lens shape (Figma Vector 1) - radial gradient eye */}
         <svg
           className="absolute left-[-11%] top-[38%] -translate-y-1/2 w-[560px] h-[490px] md:w-[720px] md:h-[620px] pointer-events-none"
@@ -110,13 +110,13 @@ export default function GetInTouch() {
             viewport={{ once: true }}
             className="pt-4"
           >
-            <h2 className="text-[40px] sm:text-5xl lg:text-[54px] xl:text-[66px] 2xl:text-[80px] font-bold text-[#45ADFF] leading-[1.02] mb-3 whitespace-nowrap">
+            <h2 className="text-4xl sm:text-5xl lg:text-[54px] xl:text-[66px] 2xl:text-[80px] font-bold text-[#45ADFF] leading-[1.05] mb-3 whitespace-normal lg:whitespace-nowrap">
               Get In Touch
             </h2>
-            <p className="text-white/70 text-lg sm:text-xl md:text-2xl mb-14">Let Us Know How We Can Help</p>
+            <p className="text-white/70 text-lg sm:text-xl md:text-2xl mb-8 md:mb-14">Let Us Know How We Can Help</p>
 
             {/* Contact Details */}
-            <div className="space-y-10">
+            <div className="space-y-6 md:space-y-10">
               {/* Call Us */}
               <div>
                 <p className="text-[#45ADFF] text-lg md:text-xl font-semibold uppercase tracking-[0.08em] mb-2.5 flex items-center gap-3">
