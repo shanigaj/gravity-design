@@ -3,38 +3,18 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
 
-    // 🔒 Change this to YOUR admin email (the one you create in Firebase Auth).
-    // Only this signed-in user can add/edit/delete website content.
-    function isAdmin() {
-      return request.auth != null
-        && request.auth.token.email == 'admin@gravitytechworld.com';
-    }
-
-    // Website content: anyone can READ (needed to show the site),
-    // only the admin can WRITE (create/update/delete).
-    match /siteImages/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-    match /gallery/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-    match /blogPosts/{docId} {
-      allow read: if true;
-      allow write: if isAdmin();
-    }
-
-    // Contact form: any visitor may SUBMIT (create) a message,
-    // but only the admin can read / manage them (visitor data stays private).
+    // Contact form: any visitor may SUBMIT a message,
+    // but only a signed-in admin can read / manage them.
     match /contactMessages/{docId} {
       allow create: if true;
-      allow read, update, delete: if isAdmin();
+      allow read, update, delete: if request.auth != null;
     }
 
-    // Everything else: locked.
+    // Website content (siteImages, gallery, blogPosts, ...):
+    // public read so the site displays; only signed-in admin can write.
     match /{document=**} {
-      allow read, write: if false;
+      allow read: if true;
+      allow write: if request.auth != null;
     }
   }
 }
