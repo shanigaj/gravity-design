@@ -96,7 +96,7 @@ export default function Footer() {
                 { name: 'Services', href: '/services' },
                 { name: 'Team', href: '/team' },
                 { name: 'Career', href: '/career' },
-                { name: 'Gallery', href: '/gallery' },
+                // { name: 'Gallery', href: '/gallery' }, // Gallery hidden on request
                 { name: 'Contact', href: '/contact' },
               ].map((link) => (
                 <li key={link.name}>

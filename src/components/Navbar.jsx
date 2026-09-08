@@ -16,7 +16,7 @@ export default function Navbar() {
     { name: 'Company', href: '#', hasDropdown: true, children: [
       { name: 'About Us', href: '/about' },
       { name: 'Career', href: '/career' },
-      { name: 'Gallery', href: '/gallery' },
+      // { name: 'Gallery', href: '/gallery' }, // Gallery hidden on request
     ]},
     { name: 'Contact', href: '/contact' },
   ];
@@ -108,7 +108,8 @@ export default function Navbar() {
               <Link to="/about" onClick={() => setIsOpen(false)} className="block py-2 text-text-secondary hover:text-accent">About Us</Link>
               <Link to="/services" onClick={() => setIsOpen(false)} className="block py-2 text-text-secondary hover:text-accent">Services</Link>
               <Link to="/career" onClick={() => setIsOpen(false)} className="block py-2 text-text-secondary hover:text-accent">Career</Link>
-              <Link to="/gallery" onClick={() => setIsOpen(false)} className="block py-2 text-text-secondary hover:text-accent">Gallery</Link>
+              {/* Gallery hidden on request */}
+              {/* <Link to="/gallery" onClick={() => setIsOpen(false)} className="block py-2 text-text-secondary hover:text-accent">Gallery</Link> */}
               <Link to="/contact" onClick={() => setIsOpen(false)} className="block py-2 text-text-secondary hover:text-accent">Contact</Link>
             </div>
           </motion.div>

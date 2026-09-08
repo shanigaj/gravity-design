@@ -7,7 +7,7 @@ import Services from '../components/Services';
 import WorkingProcess from '../components/WorkingProcess';
 import Technology from '../components/Technology';
 import Stats from '../components/Stats';
-import Team from '../components/Team';
+// import Team from '../components/Team'; // Team section hidden on request
 import GetInTouch from '../components/GetInTouch';
 import Footer from '../components/Footer';
 import SEO from '../components/SEO';
@@ -31,7 +31,8 @@ export default function HomePage() {
         <WorkingProcess />
         <Technology />
         <Stats />
-        <Team />
+        {/* Team section hidden on request — uncomment to restore */}
+        {/* <Team /> */}
         <GetInTouch />
       </main>
       <Footer />
