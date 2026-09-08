@@ -3,13 +3,13 @@ import { Helmet } from 'react-helmet-async';
 const SITE_NAME = 'Gravity Tech World';
 const SITE_URL = 'https://gravitytechworld.com';
 const DEFAULT_DESC =
-  'Gravity Tech World - a leading web design, web development and software company in Surat. Fast, responsive, SEO-friendly and secure websites, apps and custom software.';
+  'Gravity Tech World - a leading mobile app development company in Surat, building high-quality Android and iOS apps, plus custom software, websites, UI/UX design and e-commerce solutions.';
 const DEFAULT_IMAGE = `${SITE_URL}/og-image.png`;
 const DEFAULT_KEYWORDS =
-  'web development Surat, software company Surat, website design, mobile app development, UI UX design, SEO services, Gravity Tech World';
+  'mobile app development company Surat, Android app development Surat, iOS app development Surat, app developers Surat, software company Surat, custom software development, web development, UI UX design, e-commerce development, Gravity Tech World';
 
 export default function SEO({ title, description, keywords, image, path }) {
-  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Web & Software Development Company in Surat`;
+  const fullTitle = title ? `${title} | ${SITE_NAME}` : `${SITE_NAME} | Mobile App (Android & iOS) & Software Development Company in Surat`;
   const desc = description || DEFAULT_DESC;
   const url = path ? `${SITE_URL}${path}` : SITE_URL;
 
